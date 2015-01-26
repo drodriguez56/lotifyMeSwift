@@ -5,6 +5,32 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--History Table View Controller-->
+        <scene sceneID="8mL-10-6ec">
+            <objects>
+                <tableViewController id="hiX-TS-1kq" customClass="HistoryTableViewController" customModule="LotifyMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHu-Q7-y0z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickCell" id="VMN-MN-xNo">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VMN-MN-xNo" id="950-ay-7Sq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hiX-TS-1kq" id="CKM-gl-MtZ"/>
+                            <outlet property="delegate" destination="hiX-TS-1kq" id="tFl-UB-5GQ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ItI-cR-ZFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2574" y="115"/>
+        </scene>
         <!--New Pick Game Type View Controller-->
         <scene sceneID="kZs-Pe-lvO">
             <objects>
@@ -48,7 +74,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zGo-tR-3fU">
-                        <barButtonItem key="rightBarButtonItem" title="History" id="F8H-ki-P38"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="E1h-ph-6Mb">
+                            <connections>
+                                <segue destination="hiX-TS-1kq" kind="show" id="dFz-dW-Wa6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gameType" destination="4JP-Vc-bnV" id="Bva-0U-tOz"/>

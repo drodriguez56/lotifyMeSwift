@@ -30,6 +30,8 @@
 		65D72E901A75841D00499E33 /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65D72E8E1A75841D00499E33 /* Session.xcdatamodeld */; };
 		65D72EC71A75A04E00499E33 /* UserAuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72EC61A75A04E00499E33 /* UserAuthSession.swift */; };
 		65D72EC91A75B2D300499E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72EC81A75B2D300499E33 /* LoginViewController.swift */; };
+		CBEE2CC91A76EF1700F1CB98 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */; };
+		CBEE2CCB1A76F04600F1CB98 /* Pick.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE2CCA1A76F04600F1CB98 /* Pick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		65D72E8F1A75841D00499E33 /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
 		65D72EC61A75A04E00499E33 /* UserAuthSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthSession.swift; sourceTree = "<group>"; };
 		65D72EC81A75B2D300499E33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		CBEE2CCA1A76F04600F1CB98 /* Pick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 				65593C1D1A74932900FCC915 /* NewPickGameTypeViewController.swift */,
 				65D72E841A75582500499E33 /* NewPickDateViewController.swift */,
 				65D72EC81A75B2D300499E33 /* LoginViewController.swift */,
+				CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				65D72E891A75791D00499E33 /* Session.swift */,
+				CBEE2CCA1A76F04600F1CB98 /* Pick.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEE2CC91A76EF1700F1CB98 /* HistoryTableViewController.swift in Sources */,
 				65D72EC91A75B2D300499E33 /* LoginViewController.swift in Sources */,
 				65D72E901A75841D00499E33 /* Session.xcdatamodeld in Sources */,
 				65593C171A745E6700FCC915 /* HTTPUpload.swift in Sources */,
@@ -315,6 +322,7 @@
 				65593C161A745E6700FCC915 /* HTTPTask.swift in Sources */,
 				656F22431A768A9D00C89DD7 /* NewPickInputGlobal.swift in Sources */,
 				656F22491A76D9FF00C89DD7 /* Utilities.swift in Sources */,
+				CBEE2CCB1A76F04600F1CB98 /* Pick.swift in Sources */,
 				65593C0E1A745D9F00FCC915 /* JSONJoy.swift in Sources */,
 				65D72E851A75582500499E33 /* NewPickDateViewController.swift in Sources */,
 				65593BE61A743D4E00FCC915 /* SignupViewController.swift in Sources */,
