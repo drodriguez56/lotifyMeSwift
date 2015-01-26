@@ -149,7 +149,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FZi-6b-9m4">
                                 <rect key="frame" x="37" y="285" width="526" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="htk-xW-yIm" id="gUb-3T-D2K"/>
                                 </connections>
@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubT-tm-7N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="867"/>
+            <point key="canvasLocation" x="-396" y="1617"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="5Cq-4H-w1q">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0It-vx-lhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1122" y="1601"/>
+            <point key="canvasLocation" x="-1122" y="2365"/>
         </scene>
         <!--New Pick Number View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -273,6 +273,7 @@
                         <outlet property="numberInput" destination="Iw7-Z0-0AM" id="3Dy-0w-X3y"/>
                         <segue destination="htk-xW-yIm" kind="show" identifier="NewPickNumberSegueToLoginViewController" id="U5G-9a-lYm"/>
                         <segue destination="EZO-fj-cme" kind="show" identifier="NewPickNumberSegueToProfileViewController" id="aje-un-9Mw"/>
+                        <segue destination="y9Y-g3-gdx" kind="show" identifier="NewPickNumberSegueToSignupViewController" id="CN8-a3-UPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -302,7 +303,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWK-BR-fk7">
                                 <rect key="frame" x="37" y="285" width="526" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="y9Y-g3-gdx" id="oxs-B4-sbB"/>
                                 </connections>
@@ -337,14 +338,15 @@
                     <connections>
                         <outlet property="emailInput" destination="p0b-y3-6Lb" id="KSH-Zb-oBe"/>
                         <outlet property="passwordInput" destination="wWK-BR-fk7" id="FS7-GG-oiK"/>
+                        <segue destination="EZO-fj-cme" kind="show" identifier="SignupViewControllerSegueToProfileViewController" id="F82-QL-Nfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4m-e2-Y88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="1601"/>
+            <point key="canvasLocation" x="-1836" y="1617"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aje-un-9Mw"/>
+        <segue reference="s2C-br-f5h"/>
     </inferredMetricsTieBreakers>
 </document>

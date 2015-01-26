@@ -33,6 +33,7 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             self.view.backgroundColor = blueBackground
+//            thisViewForAlert = self
             if dateGlobal != "" {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"

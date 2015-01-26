@@ -6,29 +6,31 @@
 //  Copyright (c) 2015 LocoLabs. All rights reserved.
 //
 
-import Foundation
-import UIKit
+    import Foundation
+    import UIKit
 
-public func alert(title: String, body: String, caller: AnyObject) {
+    public func alert(title: String, body: String, popupViewControllerCallingViewController: AnyObject) {
+        
+            let alertController = UIAlertController(
+                title: title,
+                message: body,
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            
+            alertController.addAction(
+                UIAlertAction(
+                    title: "Dismiss",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil
+                )
+            )
+            
+            popupViewControllerCallingViewController.presentViewController(
+                alertController,
+                animated: true,
+                completion: nil
+            )
 
-    let alertController = UIAlertController(
-        title: title,
-        message: body,
-        preferredStyle: UIAlertControllerStyle.Alert
-    )
-    
-    alertController.addAction(
-        UIAlertAction(
-            title: "Dismiss",
-            style: UIAlertActionStyle.Default,
-            handler: nil
-        )
-    )
-    
-    caller.presentViewController(
-        alertController,
-        animated: true,
-        completion: nil
-    )
-
-}
+            println("alert() called by viewController: \(popupViewControllerCallingViewController)") // Report
+        
+    }

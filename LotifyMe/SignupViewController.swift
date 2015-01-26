@@ -22,7 +22,7 @@
             
             self.view.endEditing(true)
 
-            signupPostRequest()
+            signupPostRequest(sender)
             
         }
     
@@ -32,7 +32,6 @@
             
             if passwordInput.isFirstResponder() {
                 passwordInput.resignFirstResponder()
-                signupPostRequest()
             } else {
                 passwordInput.becomeFirstResponder()
             }
@@ -49,7 +48,7 @@
         
 // SIGNUP POST REQUEST FUNCTION
         
-        func signupPostRequest() {
+        func signupPostRequest(sender: AnyObject) {
             
             struct Status : JSONJoy {
                 var status: String?
@@ -68,6 +67,9 @@
                 "password": passwordInput.text
             ]
             
+            var postRequestSuccess = false
+            var keepCheckingPostRequestStatus = true
+            
             postRequest.POST(
                 "http://localhost:4848/users",
                 parameters: params,
@@ -77,6 +79,10 @@
                     if response.responseObject != nil {
                         let resp = Status(JSONDecoder(response.responseObject!))
                         println("Reponse from server has content: \(response.text())") // Report
+                        instantiateSession(currentUserEmailOrUsernameAttempt[0])
+                        if beforeLoginVariable == "onCreate" {
+                            postRequestSuccess = true
+                        }
                     }
                 },
                 failure: {
@@ -84,6 +90,20 @@
                     println("signupPostRequest() called: Server returned failure") // Report
                 }
             )
+                
+            while keepCheckingPostRequestStatus == true {
+                if postRequestSuccess == true {
+                    keepCheckingPostRequestStatus = false
+                    newPickPostRequest(self)
+                    resetBeforeLoginVariable()
+                    println("Expecting resetBeforeLoginVariable() to have been called") // Report
+                    println("signupPostRequest() called: User successfully signed up; segue to ProfileViewController") // Report
+                    self.performSegueWithIdentifier(
+                        "SignupViewControllerSegueToProfileViewController",
+                        sender: sender
+                    )
+                }
+            }
             
         }
         
