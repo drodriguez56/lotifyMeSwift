@@ -45,6 +45,7 @@
 // LOTIFY BUTTON ACTION
         
         @IBAction func lotifyButton(sender: AnyObject) {
+
             captureValues()
             println("New Pick object will be created shortly. Input values will be:") // Report
             println("* gameTypeGlobal: \(gameTypeGlobal)") // Report
@@ -53,22 +54,73 @@
             println("* multiGlobal:    \(multiGlobal)") // Report
             var currentSession = retrieveSession()
             if currentSession == "nilUser" {
-                println("lotifyButton pressed: No users logged in; segue to LoginViewController") // Report
-                beforeLoginVariable = "onCreate"
-                performSegueWithIdentifier(
-                    "NewPickNumberSegueToLoginViewController",
-                    sender: sender
+                
+                println("lotifyButton pressed: No users logged in; show popup alert for login or signup") // Report
+                
+                let alertController = UIAlertController(
+                    title: "Almost There!",
+                    message: "Create an account with your email, or login if you already have one.",
+                    preferredStyle: UIAlertControllerStyle.Alert
                 )
+                
+                alertController.addAction(
+                    UIAlertAction(
+                        title: "Login",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(actionSheet: UIAlertAction!) in
+                            println("Login selected: Segue to LoginViewController") // Report
+                            beforeLoginVariable = "onCreate"
+                            self.segueToLogin(sender)
+                        }
+                    )
+                )
+                
+                alertController.addAction(
+                    UIAlertAction(
+                        title: "Signup",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(actionSheet: UIAlertAction!) in
+                            println("Signup selected: Segue to SignupViewController") // Report
+                            beforeLoginVariable = "onCreate"
+                            self.segueToSignup(sender)
+                        }
+                    )
+                )
+                
+                presentViewController(
+                    alertController,
+                    animated: true,
+                    completion: nil
+                )
+                
             } else if currentSession == "#Error" {
                 println("lotifyButton pressed: Error in fetching session; do nothing") // Report
             } else {
                 println("lotifyButton pressed: User is logged in; segue to ProfileViewController") // Report
-                newPickPostRequest()
+                newPickPostRequest(self)
                 performSegueWithIdentifier(
                     "NewPickNumberSegueToProfileViewController",
                     sender: sender
                 )
             }
+        }
+
+// SEGUE TO LOGIN
+        
+        func segueToLogin(sender: AnyObject) {
+            performSegueWithIdentifier(
+                "NewPickNumberSegueToLoginViewController",
+                sender: sender
+            )
+        }
+        
+// SEGUE TO SIGNUP
+
+        func segueToSignup(sender: AnyObject) {
+            performSegueWithIdentifier(
+                "NewPickNumberSegueToSignupViewController",
+                sender: sender
+            )
         }
         
 // CAPTURE VALUES FUNCTION
