@@ -64,8 +64,6 @@
             } else {
                 println("lotifyButton pressed: User is logged in; segue to ProfileViewController") // Report
                 newPickPostRequest()
-                sleep(2)
-                newPickPostRequest()
                 performSegueWithIdentifier(
                     "NewPickNumberSegueToProfileViewController",
                     sender: sender

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-public func alert(title: String, body: String) {
+public func alert(title: String, body: String, caller: AnyObject) {
 
     let alertController = UIAlertController(
         title: title,
@@ -24,7 +25,7 @@ public func alert(title: String, body: String) {
         )
     )
     
-    self.presentViewController(
+    caller.presentViewController(
         alertController,
         animated: true,
         completion: nil
