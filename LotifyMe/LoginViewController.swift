@@ -69,7 +69,7 @@
             
             currentUserEmailOrUsernameAttempt[0] = userLoginKeyInput.text
             
-            var postRequestSuccess = false
+            var postRequestStatus = ""
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
@@ -81,30 +81,39 @@
                     if response.responseObject != nil {
                         let resp = Status(JSONDecoder(response.responseObject!))
                         println("Reponse from server has content: \(response.text())") // Report
-                        instantiateSession(currentUserEmailOrUsernameAttempt[0])
+                        var jsonAsString = "\(response.text())" as String
+                        instantiateSession(jsonParseEmail(jsonAsString))
                         resetCurrentUserEmailOrUsernameAttempt()
                         println("Expecting resetCurrentUserEmailOrUsernameAttempt() to have been called") // Report
-                        if beforeLoginVariable == "onCreate" {
-                            postRequestSuccess = true
-                        }
+                        postRequestStatus = "success"
                     }
                 },
                 failure: {
                     (error: NSError, response: HTTPResponse?) in
-                    println("signupPostRequest() called: Server returned failure") // Report
+                    println("loginPostRequest() called: Server returned failure") // Report
+                    postRequestStatus = "failure"
                 }
             )
 
             while keepCheckingPostRequestStatus == true {
-                if postRequestSuccess == true {
+                if postRequestStatus == "success" {
                     keepCheckingPostRequestStatus = false
-                    newPickPostRequest(self)
-                    resetBeforeLoginVariable()
-                    println("Expecting resetBeforeLoginVariable() to have been called") // Report
+                    if beforeLoginVariable == "onCreate" {
+                        newPickPostRequest(self)
+                        resetBeforeLoginVariable()
+                        println("Expecting resetBeforeLoginVariable() to have been called") // Report
+                    }
                     println("loginPostRequest() called: User successfully logged in; segue to ProfileViewController") // Report
                     self.performSegueWithIdentifier(
                         "LoginViewControllerSegueToProfileViewController",
                         sender: sender
+                    )
+                } else if postRequestStatus == "failure" {
+                    keepCheckingPostRequestStatus = false
+                    alert(
+                        "Try Again",
+                        "Looks like your email, username, or password might be incorrect.",
+                        self
                     )
                 }
             }

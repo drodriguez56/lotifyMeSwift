@@ -1,31 +1,31 @@
 //
-//  SignupViewController.swift
+//  ProfileViewController.swift
 //  LotifyMe
 //
-//  Created by Daniel K. Chan on 1/24/15.
+//  Created by Daniel K. Chan on 1/27/15.
 //  Copyright (c) 2015 LocoLabs. All rights reserved.
 //
 
+    import Foundation
     import UIKit
-    import CoreData
 
-    class SignupViewController: UIViewController, UITextFieldDelegate {
+    class ProfileViewController: UIViewController, UITextFieldDelegate {
         
 // CAPTURE INPUT FIELDS
         
-        @IBOutlet weak var emailInput: UITextField!
+        @IBOutlet weak var userLoginKeyInput: UITextField!
         @IBOutlet weak var passwordInput: UITextField!
         
 // SUBMIT BUTTON ACTION
         
-        @IBAction func signupButton(sender: AnyObject) {
+        @IBAction func loginButton(sender: AnyObject) {
             
             self.view.endEditing(true)
-
-            signupPostRequest(sender)
+            
+            loginPostRequest(sender)
             
         }
-    
+        
 // ENTER KEY ACTION
         
         func textFieldShouldReturn(textField: UITextField) -> Void {
@@ -46,9 +46,9 @@
             
         }
         
-// SIGNUP POST REQUEST FUNCTION
+// LOGIN POST REQUEST FUNCTION
         
-        func signupPostRequest(sender: AnyObject) {
+        func loginPostRequest(sender: AnyObject) {
             
             struct Status : JSONJoy {
                 var status: String?
@@ -63,35 +63,38 @@
             var postRequest = HTTPTask()
             
             let params: Dictionary<String,AnyObject> = [
-                "email": emailInput.text,
+                "user_input": userLoginKeyInput.text,
                 "password": passwordInput.text
             ]
             
-            currentUserEmailOrUsernameAttempt[0] = emailInput.text
+            currentUserEmailOrUsernameAttempt[0] = userLoginKeyInput.text
             
             var postRequestStatus = ""
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/users",
+                "http://localhost:4848/login",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in
-                    println("signupPostRequest() called: Server returned success") // Report
+                    println("loginPostRequest() called: Server returned success") // Report
                     if response.responseObject != nil {
                         let resp = Status(JSONDecoder(response.responseObject!))
                         println("Reponse from server has content: \(response.text())") // Report
-                        instantiateSession(currentUserEmailOrUsernameAttempt[0])
+                        var jsonAsString = "\(response.text())" as String
+                        instantiateSession(jsonParseEmail(jsonAsString))
+                        resetCurrentUserEmailOrUsernameAttempt()
+                        println("Expecting resetCurrentUserEmailOrUsernameAttempt() to have been called") // Report
                         postRequestStatus = "success"
                     }
                 },
                 failure: {
                     (error: NSError, response: HTTPResponse?) in
-                    println("signupPostRequest() called: Server returned failure") // Report
+                    println("loginPostRequest() called: Server returned failure") // Report
                     postRequestStatus = "failure"
                 }
             )
-                
+            
             while keepCheckingPostRequestStatus == true {
                 if postRequestStatus == "success" {
                     keepCheckingPostRequestStatus = false
@@ -100,16 +103,16 @@
                         resetBeforeLoginVariable()
                         println("Expecting resetBeforeLoginVariable() to have been called") // Report
                     }
-                    println("signupPostRequest() called: User successfully signed up; segue to ProfileViewController") // Report
+                    println("loginPostRequest() called: User successfully logged in; segue to ProfileViewController") // Report
                     self.performSegueWithIdentifier(
-                        "SignupViewControllerSegueToProfileViewController",
+                        "LoginViewControllerSegueToProfileViewController",
                         sender: sender
                     )
                 } else if postRequestStatus == "failure" {
                     keepCheckingPostRequestStatus = false
                     alert(
                         "Try Again",
-                        "Check that you entered a valid email, and a password between 6 and 20 characters.",
+                        "Looks like your email, username, or password might be incorrect.",
                         self
                     )
                 }
@@ -123,11 +126,10 @@
             super.viewDidLoad()
             self.view.backgroundColor = blueBackground
         }
-
+        
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
         }
-
-
+        
+        
     }
-

@@ -131,3 +131,31 @@
         }
         
     }
+
+// LOGIN JSON PARSER
+
+    public func jsonParseEmail(jsonAsString: String) -> String {
+
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsString.componentsSeparatedByCharactersInSet(jsonCharset)
+
+        var username = jsonAsArray[11]
+        var phone = jsonAsArray[19]
+        var email = jsonAsArray[27]
+        
+        return email
+
+    }
+
+// NEW PICK JSON PARSER
+
+    public func jsonParseOldTicket(jsonAsString: String) -> String {
+        
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsString.componentsSeparatedByCharactersInSet(jsonCharset)
+
+        var result = jsonAsArray[19]
+        
+        return result
+        
+    }

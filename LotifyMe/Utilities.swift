@@ -9,6 +9,8 @@
     import Foundation
     import UIKit
 
+// ALERT FUNCTION
+
     public func alert(title: String, body: String, popupViewControllerCallingViewController: AnyObject) {
         
             let alertController = UIAlertController(
@@ -33,4 +35,22 @@
 
             println("alert() called by viewController: \(popupViewControllerCallingViewController)") // Report
         
+    }
+
+// OLD TICKET FUNCTION
+
+    public func oldTicket(drawDateString: String) -> Boolean {
+
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        var drawDate = dateFormatter.dateFromString(drawDateString) as NSDate!
+        var currentDate = NSDate()
+        
+        if currentDate.compare(drawDate) == NSComparisonResult.OrderedAscending {
+            return 0
+        } else {
+            return 1
+        }
+
     }
