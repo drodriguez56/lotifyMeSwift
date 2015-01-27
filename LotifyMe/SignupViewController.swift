@@ -62,9 +62,13 @@
             
             var postRequest = HTTPTask()
             
-            let params: Dictionary<String,AnyObject> = [
+            let user: Dictionary<String,AnyObject> = [
                 "email": emailInput.text,
                 "password": passwordInput.text
+            ]
+            
+            let params: Dictionary<String,AnyObject> = [
+                "user": user
             ]
             
             currentUserEmailOrUsernameAttempt[0] = emailInput.text
