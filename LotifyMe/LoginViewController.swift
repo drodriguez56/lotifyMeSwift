@@ -73,7 +73,7 @@
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/login",
+                "\(rootPath)/login",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in

@@ -77,7 +77,7 @@
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/users",
+                "\(rootPath)/users",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in

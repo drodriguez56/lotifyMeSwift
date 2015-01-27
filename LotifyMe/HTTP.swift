@@ -42,7 +42,7 @@
         ]
         
         postRequest.POST(
-            "http://localhost:4848/picks",
+            "\(rootPath)/picks",
             parameters: params,
             success: {
                 (response: HTTPResponse) in

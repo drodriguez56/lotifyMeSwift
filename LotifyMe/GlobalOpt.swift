@@ -10,4 +10,6 @@
     import UIKit
     import CoreData
 
+    public var rootPath = "http://localhost:4848"
+
     public var blueBackground =  UIColor(red: 0.8067, green: 0.9053, blue: 0.9943, alpha: 1.0)
