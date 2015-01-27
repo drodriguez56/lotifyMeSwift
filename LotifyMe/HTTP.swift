@@ -54,7 +54,7 @@
                 )
                 if response.responseObject != nil {
                     let resp = Status(JSONDecoder(response.responseObject!))
-                    println("Reponse from server has content: \(response.text())") // Report
+                    println("Response from server has content: \(response.text())") // Report
                     resetNewPickInputVariables()
                     println("Expecting resetNewPickInputVariables() to have been called") // Report
                 }
