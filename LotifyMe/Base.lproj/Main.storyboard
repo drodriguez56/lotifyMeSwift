@@ -227,7 +227,7 @@
         <!--Profile View Controller-->
         <scene sceneID="5Cq-4H-w1q">
             <objects>
-                <viewController id="EZO-fj-cme" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="EZO-fj-cme" customClass="ProfileViewController" customModule="LotifyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0mh-Ka-CGl"/>
                         <viewControllerLayoutGuide type="bottom" id="1Bi-Ht-7Na"/>

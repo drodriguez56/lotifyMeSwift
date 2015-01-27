@@ -13,7 +13,26 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+
+    // Allow Notifications
+        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
+        var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
+        application.registerUserNotificationSettings(setting);
+        application.registerForRemoteNotifications();
+        return true
+    }
     
+    // Notifications vvv
+    
+//    var localNotification:UILocalNotification = UILocalNotification()
+//    localNotification.alertAction = "Testing notifications on iOS8"
+//    localNotification.alertBody = "Woww it works!!"
+//    localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+//    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    
+    // Notifications ^^^
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

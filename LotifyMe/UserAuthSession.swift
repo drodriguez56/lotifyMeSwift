@@ -131,3 +131,45 @@
         }
         
     }
+
+// LOGIN JSON PARSER
+
+    public func jsonParseEmail(jsonAsString: String) -> String {
+
+        var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
+            "\\\":null",
+            withString: "\\\":\\\"None\\\"",
+            options: NSStringCompareOptions.LiteralSearch,
+            range: nil
+        )
+        
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
+
+        var username = jsonAsArray[11]
+        var phone = jsonAsArray[19]
+        var email = jsonAsArray[27]
+        
+        return email
+
+    }
+
+// NEW PICK JSON PARSER
+
+    public func jsonParseOldTicket(jsonAsString: String) -> String {
+        
+        var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
+            "result\\\":null",
+            withString: "result\\\":\\\"No Result\\\"",
+            options: NSStringCompareOptions.LiteralSearch,
+            range: nil
+        )
+        
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
+
+        var result = jsonAsArray[19]
+        
+        return result
+        
+    }

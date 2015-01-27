@@ -47,14 +47,24 @@
             success: {
                 (response: HTTPResponse) in
                 println("newPickPostRequest() called: Server returned success") // Report
-                alert(
-                    "\(gameTypeGlobal) Pick Submitted",
-                    "You will receive an email at \(retrieveSession()) when the results come out.",
-                    popupViewControllerCallingViewController
-                )
+                if oldTicket(dateGlobal) == 1 {
+                    var jsonAsString = "\(response.text())" as String
+                    var result = jsonParseOldTicket(jsonAsString)
+                    alert(
+                        "Game Results",
+                        "This game has already been drawn, and your result is: \(result). Best of luck as always!",
+                        popupViewControllerCallingViewController
+                    )
+                } else {
+                    alert(
+                        "\(gameTypeGlobal) Pick Submitted",
+                        "You will receive an email at \(retrieveSession()) when the results come out.",
+                        popupViewControllerCallingViewController
+                    )
+                }
                 if response.responseObject != nil {
                     let resp = Status(JSONDecoder(response.responseObject!))
-                    println("Reponse from server has content: \(response.text())") // Report
+                    println("Response from server has content: \(response.text())") // Report
                     resetNewPickInputVariables()
                     println("Expecting resetNewPickInputVariables() to have been called") // Report
                 }
@@ -62,6 +72,11 @@
             failure: {
                 (error: NSError, response: HTTPResponse?) in
                 println("newPickPostRequest() called: Server returned failure") // Report
+                alert(
+                    "Duplicate Pick",
+                    "Looks like you've already submitted that pick before...",
+                    popupViewControllerCallingViewController
+                )
             }
         )
         

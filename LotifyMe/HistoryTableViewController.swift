@@ -12,16 +12,114 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     
     var picks = [Pick]()
     
+    // SHOW PICKS GET REQUEST
+    
+    func showPicksGetRequest() {
+        
+        struct Status : JSONJoy {
+            var status: String?
+            init() {
+                
+            }
+            init(_ decoder: JSONDecoder) {
+                status = decoder["status"].string
+            }
+        }
+        
+        var getRequest = HTTPTask()
+        
+        let pick: Dictionary<String,String> = [
+            "email": "\(retrieveSession())",
+        ]
+        
+        let params: Dictionary<String,AnyObject> = [
+            "pick": pick
+        ]
+
+        var keepCheckingForCompletion = true
+        var getRequestCompleted = false
+        
+        getRequest.GET(
+            "http://localhost:4848/picks",
+            parameters: params,
+            success: {
+                (response: HTTPResponse) in
+                println("showPicksGetRequest() called: Server returned success") // Report
+                if response.responseObject != nil {
+                    let resp = Status(JSONDecoder(response.responseObject!))
+                    self.picks = self.showPicksGetRequestResponseParser("\(response.text())")
+                    getRequestCompleted = true
+                }
+            },
+            failure: {
+                (error: NSError, response: HTTPResponse?) in
+                println("showPicksGetRequest() called: Server returned failure") // Report
+            }
+        )
+        
+        while keepCheckingForCompletion == true {
+            if getRequestCompleted == true {
+                keepCheckingForCompletion = false
+                tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    // SHOW PICKS GET REQUEST RESPONSE PARSER
+    
+    func showPicksGetRequestResponseParser(jsonAsString: String) -> [Pick] {
+
+        var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
+            "result\\\":null",
+            withString: "result\\\":\\\"No Result\\\"",
+            options: NSStringCompareOptions.LiteralSearch,
+            range: nil
+        )
+
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
+
+        var picks = [Pick]()
+
+        if (jsonAsArray.count - 3) % 64 == 0 {
+
+            var numberOfPicks = (jsonAsArray.count - 3) / 64
+            
+            for (var i = 0; i < numberOfPicks; i++) {
+
+                var game = jsonAsArray[11 + i * 64]
+                var result = jsonAsArray[19 + i * 64]
+                var number = jsonAsArray[47 + i * 64]
+                var draw_date_raw = jsonAsArray[55 + i * 64] as NSString
+                var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
+
+                var pick = Pick(
+                    number: number,
+                    draw_date: draw_date,
+                    result: result,
+                    game: game
+                )
+                
+                picks.append(
+                    pick
+                )
+                
+            }
+            
+        }
+        
+        return picks
+        
+    }
+    
+    // SETUP
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showPicksGetRequest()
         
-        
-        var newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "jackpot", game: "powerball")
-        picks.append(newPick)
-        
-        newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "Win $100", game: "powerball")
-        picks.append(newPick)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -35,11 +133,12 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("pickCell", forIndexPath: indexPath) as UITableViewCell
         var currentPick = picks[indexPath.row]
-        cell.textLabel?.text = currentPick.result
+        cell.textLabel?.text = currentPick.draw_date
         return cell
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 }

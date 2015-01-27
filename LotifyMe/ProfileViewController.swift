@@ -1,15 +1,15 @@
 //
-//  LoginViewController.swift
+//  ProfileViewController.swift
 //  LotifyMe
 //
-//  Created by Daniel K. Chan on 1/24/15.
+//  Created by Daniel K. Chan on 1/27/15.
 //  Copyright (c) 2015 LocoLabs. All rights reserved.
 //
 
+    import Foundation
     import UIKit
-    import CoreData
 
-    class LoginViewController: UIViewController, UITextFieldDelegate {
+    class ProfileViewController: UIViewController, UITextFieldDelegate {
         
 // CAPTURE INPUT FIELDS
         
@@ -94,7 +94,7 @@
                     postRequestStatus = "failure"
                 }
             )
-
+            
             while keepCheckingPostRequestStatus == true {
                 if postRequestStatus == "success" {
                     keepCheckingPostRequestStatus = false
@@ -133,4 +133,3 @@
         
         
     }
-
