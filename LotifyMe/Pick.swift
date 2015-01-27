@@ -12,4 +12,5 @@ struct Pick {
     var number : String
     var draw_date : String
     var result : String
+    var game : String
 }

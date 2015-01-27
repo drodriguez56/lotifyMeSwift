@@ -17,10 +17,10 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         
         
         
-        var newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "jackpot")
+        var newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "jackpot", game: "powerball")
         picks.append(newPick)
         
-        newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "Win $100")
+        newPick = Pick(number: "11 11 11 11 11 11", draw_date: "24-01-2015", result: "Win $100", game: "powerball")
         picks.append(newPick)
     }
     
