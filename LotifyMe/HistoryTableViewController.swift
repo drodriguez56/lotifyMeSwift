@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var picks = [Pick]()
+//    var picks = [Pick]()
     
     // SHOW PICKS GET REQUEST
     
@@ -47,7 +47,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 println("showPicksGetRequest() called: Server returned success") // Report
                 if response.responseObject != nil {
                     let resp = Status(JSONDecoder(response.responseObject!))
-                    self.picks = self.showPicksGetRequestResponseParser("\(response.text())")
+                    self.showPicksGetRequestResponseParser("\(response.text())")
                     getRequestCompleted = true
                 }
             },
@@ -68,7 +68,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     
     // SHOW PICKS GET REQUEST RESPONSE PARSER
     
-    func showPicksGetRequestResponseParser(jsonAsString: String) -> [Pick] {
+    func showPicksGetRequestResponseParser(jsonAsString: String) -> [pick] {
 
         var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
             "result\\\":null",
@@ -80,7 +80,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
         var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
 
-        var picks = [Pick]()
+//        var picks = [Pick]()
 
         if (jsonAsArray.count - 3) % 64 == 0 {
 
@@ -94,22 +94,24 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 var draw_date_raw = jsonAsArray[55 + i * 64] as NSString
                 var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
 
-                var pick = Pick(
-                    number: number,
-                    draw_date: draw_date,
-                    result: result,
-                    game: game
-                )
+//                var pick = Pick(
+//                    number: number,
+//                    draw_date: draw_date,
+//                    result: result,
+//                    game: game
+//                )
+//                
+//                picks.append(
+//                    pick
+//                )
                 
-                picks.append(
-                    pick
-                )
+                pickMGR.addPick(number, draw_date: draw_date, result: result, game: game)
                 
             }
             
         }
         
-        return picks
+        return pickMGR.picks
         
     }
     
@@ -119,21 +121,42 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         super.viewDidLoad()
         
         showPicksGetRequest()
-        
+        println(pickMGR.picks[0].result)
+        println(pickMGR.picks[1].result)
+        println(pickMGR.picks[2].result)
     }
+    
+    
+    // TABEL CELL FUNCS
+    
+    @IBOutlet var historyTableView: UITableView!
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->Int {
-        return picks.count
+        return pickMGR.picks.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("pickCell", forIndexPath: indexPath) as UITableViewCell
-        var currentPick = picks[indexPath.row]
-        cell.textLabel?.text = currentPick.draw_date
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        var cell: PickCell = tableView.dequeueReusableCellWithIdentifier("PickCell") as PickCell
+        
+        if indexPath.row % 2 == 0
+        {
+            cell.backgroundColor = UIColor.purpleColor()
+        }
+        else
+        {
+           cell.backgroundColor = UIColor.orangeColor()
+        }
+        
+  
+        cell.leftTopLable?.text = pickMGR.picks[indexPath.row].game
+        cell.leftBottomLabel?.text = pickMGR.picks[indexPath.row].draw_date
+        cell.rightTopLabel?.text = pickMGR.picks[indexPath.row].number
+        cell.rightBottomLable?.text = pickMGR.picks[indexPath.row].result
         return cell
     }
     

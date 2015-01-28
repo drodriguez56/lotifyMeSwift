@@ -14,3 +14,4 @@ struct Pick {
     var result : String
     var game : String
 }
+
