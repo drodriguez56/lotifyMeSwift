@@ -34,7 +34,6 @@
 		CB3DF9F01A782EFE0020A9B9 /* PickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DF9EF1A782EFE0020A9B9 /* PickManager.swift */; };
 		CB3DF9F21A783A240020A9B9 /* PickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DF9F11A783A240020A9B9 /* PickCell.swift */; };
 		CBEE2CC91A76EF1700F1CB98 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */; };
-		CBEE2CCB1A76F04600F1CB98 /* Pick.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE2CCA1A76F04600F1CB98 /* Pick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +80,6 @@
 		CB3DF9EF1A782EFE0020A9B9 /* PickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickManager.swift; sourceTree = "<group>"; };
 		CB3DF9F11A783A240020A9B9 /* PickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickCell.swift; sourceTree = "<group>"; };
 		CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		CBEE2CCA1A76F04600F1CB98 /* Pick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				65D72E891A75791D00499E33 /* Session.swift */,
-				CBEE2CCA1A76F04600F1CB98 /* Pick.swift */,
 				CB3DF9EF1A782EFE0020A9B9 /* PickManager.swift */,
 			);
 			name = Models;
@@ -332,7 +329,6 @@
 				CB3DF9F01A782EFE0020A9B9 /* PickManager.swift in Sources */,
 				656F22431A768A9D00C89DD7 /* NewPickInputGlobal.swift in Sources */,
 				656F22491A76D9FF00C89DD7 /* Utilities.swift in Sources */,
-				CBEE2CCB1A76F04600F1CB98 /* Pick.swift in Sources */,
 				65593C0E1A745D9F00FCC915 /* JSONJoy.swift in Sources */,
 				65D72E851A75582500499E33 /* NewPickDateViewController.swift in Sources */,
 				65593BE61A743D4E00FCC915 /* SignupViewController.swift in Sources */,

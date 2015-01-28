@@ -10,7 +10,6 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
-//    var picks = [Pick]()
     
     // SHOW PICKS GET REQUEST
     
@@ -80,8 +79,6 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
         var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
 
-//        var picks = [Pick]()
-
         if (jsonAsArray.count - 3) % 64 == 0 {
 
             var numberOfPicks = (jsonAsArray.count - 3) / 64
@@ -94,16 +91,6 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 var draw_date_raw = jsonAsArray[55 + i * 64] as NSString
                 var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
 
-//                var pick = Pick(
-//                    number: number,
-//                    draw_date: draw_date,
-//                    result: result,
-//                    game: game
-//                )
-//                
-//                picks.append(
-//                    pick
-//                )
                 
                 pickMGR.addPick(number, draw_date: draw_date, result: result, game: game)
                 
