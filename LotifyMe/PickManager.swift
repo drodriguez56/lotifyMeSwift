@@ -23,19 +23,13 @@ class PickManager: NSObject {
     var picks = [pick]()
     
     func addPick(pick_id: String, number: String, draw_date: String, result: String, game: String){
+        if picks.count > 0{
+            for (var i = 0; i < picks.count; i++){
+                if pick_id == picks[i].pick_id {
+                    picks.removeAtIndex(i)
+                }
+            }
+        }
         picks.append(pick(pick_id: pick_id, number: number, draw_date: draw_date, result: result, game: game))
-//        for i in picks {
-//            println(i.pick_id)
-//            
-//            if i.pick_id == pick_id
-//            {
-//               println("if")
-//            }
-//            else
-//            {
-//                println("else")
-//                
-//            }
-//        }
     }
 }
