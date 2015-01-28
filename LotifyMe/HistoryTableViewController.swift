@@ -121,9 +121,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         super.viewDidLoad()
         
         showPicksGetRequest()
-        println(pickMGR.picks[0].result)
-        println(pickMGR.picks[1].result)
-        println(pickMGR.picks[2].result)
+        
     }
     
     
@@ -158,6 +156,14 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         cell.rightTopLabel?.text = pickMGR.picks[indexPath.row].number
         cell.rightBottomLable?.text = pickMGR.picks[indexPath.row].result
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+        if editingStyle == UITableViewCellEditingStyle.Delete
+        {
+            pickMGR.picks.removeAtIndex(indexPath.row)
+            self.historyTableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
