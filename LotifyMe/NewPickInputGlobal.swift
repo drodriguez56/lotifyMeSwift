@@ -43,3 +43,18 @@
         println("resetBeforeLoginVariable() called: beforeLoginVariable has been reset") // Report
 
     }
+
+// NORMALIZE GAME NAMES
+
+public func cleanGameTypeInput(gameTypeGlobal: String) -> String {
+    println(gameTypeGlobal)
+    if (gameTypeGlobal == "Megamillions")
+    {
+        return "MegaMillions"
+    }
+    else if (gameTypeGlobal == "NYLotto")
+    {
+        return "NyLotto"
+    }
+    return gameTypeGlobal
+}

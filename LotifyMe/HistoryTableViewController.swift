@@ -185,14 +185,14 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     {
         var cell: PickCell = tableView.dequeueReusableCellWithIdentifier("PickCell") as PickCell
         
-        if indexPath.row % 2 == 0
-        {
-//            cell.backgroundColor = UIColor.purpleColor()
-        }
-        else
-        {
-//           cell.backgroundColor = UIColor.orangeColor()
-        }
+//        if indexPath.row % 2 == 0
+//        {
+//            cell.backgroundColor = darkBlue
+//        }
+//        else
+//        {
+//           cell.backgroundColor = lightBlue
+//        }
         
   
         cell.leftTopLable?.text = pickMGR.picks[indexPath.row].game

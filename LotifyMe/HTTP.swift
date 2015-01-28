@@ -26,7 +26,7 @@
         
         let pick: Dictionary<String,String> = [
             "email": "\(retrieveSession())",
-            "game": gameTypeGlobal,
+            "game": cleanGameTypeInput(gameTypeGlobal),
             "draw_date": dateGlobal,
             "number1": numberGlobal[0],
             "number2": numberGlobal[1],
