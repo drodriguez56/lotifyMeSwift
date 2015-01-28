@@ -73,7 +73,7 @@
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/login",
+                "\(rootPath)/login",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in
@@ -125,6 +125,7 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             self.view.backgroundColor = blueBackground
+            self.navigationItem.setHidesBackButton(true, animated: true)
         }
         
         override func didReceiveMemoryWarning() {

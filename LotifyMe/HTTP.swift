@@ -42,14 +42,14 @@
         ]
         
         postRequest.POST(
-            "http://localhost:4848/picks",
+            "\(rootPath)/picks",
             parameters: params,
             success: {
                 (response: HTTPResponse) in
                 println("newPickPostRequest() called: Server returned success") // Report
-                if oldTicket(dateGlobal) == 1 {
-                    var jsonAsString = "\(response.text())" as String
-                    var result = jsonParseOldTicket(jsonAsString)
+                var jsonAsString = "\(response.text())" as String
+                if oldTicket(jsonParseOldTicketDate(jsonAsString)) == 1 {
+                    var result = jsonParseOldTicketResult(jsonAsString)
                     alert(
                         "Game Results",
                         "This game has already been drawn, and your result is: \(result). Best of luck as always!",
@@ -72,11 +72,28 @@
             failure: {
                 (error: NSError, response: HTTPResponse?) in
                 println("newPickPostRequest() called: Server returned failure") // Report
-                alert(
-                    "Duplicate Pick",
-                    "Looks like you've already submitted that pick before...",
-                    popupViewControllerCallingViewController
-                )
+                if "\(response?.text())" == "Optional(\"fail to create pick\")" {
+                    println("Reason for failure: Invalid pick, server rollback") // Report
+                    alert(
+                        "Duplicate Pick",
+                        "Looks like you've already submitted that pick before...",
+                        popupViewControllerCallingViewController
+                    )
+                } else if "\(response?.text())" == "nil" {
+                    println("Reason for failure: Cannot contact server") // Report
+                    alert(
+                        "No Internet Connection",
+                        "Looks like you don't have a connection right now...",
+                        popupViewControllerCallingViewController
+                    )
+                } else {
+                    println("Reason for failure: Uncaught exception") // Report
+                    alert(
+                        "Oops",
+                        "Looks like something went wrong. Please try again!",
+                        popupViewControllerCallingViewController
+                    )
+                }
             }
         )
         

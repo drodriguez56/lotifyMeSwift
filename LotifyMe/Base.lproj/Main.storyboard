@@ -71,7 +71,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ufy-VJ-xt9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fFo-eb-u4G">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JP-Vc-bnV">
@@ -82,9 +82,9 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
-                                <rect key="frame" x="277" y="389" width="46" height="30"/>
+                                <rect key="frame" x="200" y="389" width="200" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="Lsp-G8-Br6"/>
+                                    <constraint firstAttribute="width" constant="200" id="g7u-il-Ubr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next">
@@ -97,11 +97,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="NVz-V1-pzN"/>
-                            <constraint firstItem="ufy-VJ-xt9" firstAttribute="top" secondItem="Mep-jf-wBx" secondAttribute="bottom" constant="181" id="RIP-27-RSf"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="drN-0g-tx1"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="pwH-oG-ZjI"/>
-                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="qqO-Ra-0tU"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="0qd-WU-RCM"/>
+                            <constraint firstItem="ufy-VJ-xt9" firstAttribute="top" secondItem="Mep-jf-wBx" secondAttribute="bottom" constant="160" id="1q0-R2-1PU"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="BkO-ge-LOp"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="UCQ-Qa-Eni"/>
+                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="bL0-IP-e40"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zGo-tR-3fU">
@@ -113,6 +113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gameType" destination="4JP-Vc-bnV" id="Bva-0U-tOz"/>
+                        <outlet property="submitButton" destination="Mep-jf-wBx" id="VEk-zh-xzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAT-cq-44E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +409,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s2C-br-f5h"/>
+        <segue reference="F82-QL-Nfw"/>
     </inferredMetricsTieBreakers>
 </document>

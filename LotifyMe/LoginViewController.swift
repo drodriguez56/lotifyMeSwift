@@ -73,7 +73,7 @@
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/login",
+                "\(rootPath)/login",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in
@@ -86,12 +86,36 @@
                         resetCurrentUserEmailOrUsernameAttempt()
                         println("Expecting resetCurrentUserEmailOrUsernameAttempt() to have been called") // Report
                         postRequestStatus = "success"
+                    } else {
+                        println("Uncaught exception: Server returned success without a response (force quit)") // Report
                     }
                 },
                 failure: {
                     (error: NSError, response: HTTPResponse?) in
                     println("loginPostRequest() called: Server returned failure") // Report
                     postRequestStatus = "failure"
+                    if "\(response?.text())" == "Optional(\"login failed\")" {
+                        println("Reason for failure: Invalid login credentials") // Report
+                        alert(
+                            "Try Again",
+                            "Looks like your email, username, or password might be incorrect.",
+                            self
+                        )
+                    } else if "\(response?.text())" == "nil" {
+                        println("Reason for failure: Cannot contact server") // Report
+                        alert(
+                            "No Internet Connection",
+                            "Looks like you don't have a connection right now...",
+                            self
+                        )
+                    } else {
+                        println("Reason for failure: Uncaught exception") // Report
+                        alert(
+                            "Oops",
+                            "Looks like something went wrong. Please try again!",
+                            self
+                        )
+                    }
                 }
             )
 
@@ -110,11 +134,6 @@
                     )
                 } else if postRequestStatus == "failure" {
                     keepCheckingPostRequestStatus = false
-                    alert(
-                        "Try Again",
-                        "Looks like your email, username, or password might be incorrect.",
-                        self
-                    )
                 }
             }
             

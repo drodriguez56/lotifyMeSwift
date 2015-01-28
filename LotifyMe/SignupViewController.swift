@@ -77,7 +77,7 @@
             var keepCheckingPostRequestStatus = true
             
             postRequest.POST(
-                "http://localhost:4848/users",
+                "\(rootPath)/users",
                 parameters: params,
                 success: {
                     (response: HTTPResponse) in
@@ -87,12 +87,36 @@
                         println("Reponse from server has content: \(response.text())") // Report
                         instantiateSession(currentUserEmailOrUsernameAttempt[0])
                         postRequestStatus = "success"
+                    } else {
+                        println("Uncaught exception: Server returned success without a response (force quit)") // Report
                     }
                 },
                 failure: {
                     (error: NSError, response: HTTPResponse?) in
                     println("signupPostRequest() called: Server returned failure") // Report
                     postRequestStatus = "failure"
+                    if "\(response?.text())" == "Optional(\"signup failed\")" {
+                        println("Reason for failure: Invalid signup information") // Report
+                        alert(
+                            "Try Again",
+                            "Check that you entered a valid email, and a password between 6 and 20 characters.",
+                            self
+                        )
+                    } else if "\(response?.text())" == "nil" {
+                        println("Reason for failure: Cannot contact server") // Report
+                        alert(
+                            "No Internet Connection",
+                            "Looks like you don't have a connection right now...",
+                            self
+                        )
+                    } else {
+                        println("Reason for failure: Uncaught exception") // Report
+                        alert(
+                            "Oops",
+                            "Looks like something went wrong. Please try again!",
+                            self
+                        )
+                    }
                 }
             )
                 
@@ -111,11 +135,6 @@
                     )
                 } else if postRequestStatus == "failure" {
                     keepCheckingPostRequestStatus = false
-                    alert(
-                        "Try Again",
-                        "Check that you entered a valid email, and a password between 6 and 20 characters.",
-                        self
-                    )
                 }
             }
             
