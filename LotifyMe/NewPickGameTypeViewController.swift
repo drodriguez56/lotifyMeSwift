@@ -54,7 +54,7 @@
                 string: titleData, attributes: [
                     NSFontAttributeName:UIFont(
                         name: "HelveticaNeue",
-                        size: 24.0
+                        size: 23.0
                         )!,
                     NSForegroundColorAttributeName:UIColor.whiteColor()
                 ]
@@ -157,10 +157,13 @@
             
             // Next Button Styling
             
-            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 20)
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 19)
             submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
             submitButton.layer.cornerRadius = 2.0;
+            
+            submitButton.layer.borderColor = buttonBorderColorGlobal
+            submitButton.layer.borderWidth = 1.0
             
             // Nav Bar Styling
             

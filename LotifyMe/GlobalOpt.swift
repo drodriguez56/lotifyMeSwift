@@ -29,3 +29,5 @@
     public var layerBorderColorGlobal = (UIColor( red: 0.4, green: 0.8, blue: 0.95, alpha: 0.5)).CGColor
 
     public var buttonTextColorGlobal = UIColor( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+
+    public var buttonBorderColorGlobal = UIColor(red: 0.20, green: 0.60, blue: 0.85, alpha: 1.0).CGColor
