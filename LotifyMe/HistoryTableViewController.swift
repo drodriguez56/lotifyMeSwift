@@ -84,7 +84,8 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             var numberOfPicks = (jsonAsArray.count - 3) / 64
             
             for (var i = 0; i < numberOfPicks; i++) {
-
+                
+                var pick_id = jsonAsArray[5 + i]
                 var game = jsonAsArray[11 + i * 64]
                 var result = jsonAsArray[19 + i * 64]
                 var number = jsonAsArray[47 + i * 64]
@@ -92,7 +93,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
 
                 
-                pickMGR.addPick(number, draw_date: draw_date, result: result, game: game)
+                pickMGR.addPick(pick_id, number: number, draw_date: draw_date, result: result, game: game)
                 
             }
             
