@@ -35,8 +35,8 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             "pick": pick
         ]
 
-        var keepCheckingForCompletion = true
-        var getRequestCompleted = false
+        var keepCheckingGetRequestStatus = true
+        var getRequestStatus = ""
         
         getRequest.GET(
             "\(rootPath)/picks",
@@ -47,19 +47,24 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 if response.responseObject != nil {
                     let resp = Status(JSONDecoder(response.responseObject!))
                     self.showPicksGetRequestResponseParser("\(response.text())")
-                    getRequestCompleted = true
+                    getRequestStatus = "success"
+                } else {
+                    println("Uncaught exception: Server returned success without a response (force quit)") // Report
                 }
             },
             failure: {
                 (error: NSError, response: HTTPResponse?) in
                 println("showPicksGetRequest() called: Server returned failure") // Report
+                getRequestStatus = "failure"
             }
         )
         
-        while keepCheckingForCompletion == true {
-            if getRequestCompleted == true {
-                keepCheckingForCompletion = false
+        while keepCheckingGetRequestStatus == true {
+            if getRequestStatus == "success" {
+                keepCheckingGetRequestStatus = false
                 tableView.reloadData()
+            } else if getRequestStatus == "failure" {
+                keepCheckingGetRequestStatus = false
             }
         }
         
@@ -82,20 +87,19 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         if (jsonAsArray.count - 3) % 64 == 0 {
 
             var numberOfPicks = (jsonAsArray.count - 3) / 64
-            println(numberOfPicks)
+
             for (var i = 0; i < numberOfPicks; i++) {
-                println(jsonAsArray[5 + i])
-                var pick_id = jsonAsArray[5 + i]
-//                var pick_id_raw = jsonAsArray[5 + i] as NSString
-//                var pick_id = pick_id_raw.substringWithRange(NSRange(location: 1, length: pick_id_raw.length - 2))
+
+                var pick_id_raw = jsonAsArray[5 + i * 64] as NSString
+                var pick_id = pick_id_raw.substringWithRange(NSRange(location: 1, length: pick_id_raw.length - 2))
                 var game = jsonAsArray[11 + i * 64]
                 var result = jsonAsArray[19 + i * 64]
                 var number = jsonAsArray[47 + i * 64]
                 var draw_date_raw = jsonAsArray[55 + i * 64] as NSString
                 var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
-
                 
                 pickMGR.addPick(pick_id, number: number, draw_date: draw_date, result: result, game: game)
+
             }
             
         }
@@ -162,65 +166,81 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                     status = decoder["status"].string
                 }
             }
-                var currentView = self
+
+            var currentView = self
+        
+            var deleteRequest = HTTPTask()
             
-                var deleteRequest = HTTPTask()
-                
-                let params: Dictionary<String,AnyObject> = [
-                    "id": pickMGR.picks[indexPath.row].pick_id
-                ]
-                
-                deleteRequest.DELETE(
-                    "\(rootPath)/picks/\(pickMGR.picks[indexPath.row].pick_id)",
-                    parameters: params,
-                    success: {
-                        (response: HTTPResponse) in
-                        println("deletePickDeleteRequest() called: Server returned success") // Report
-                        if "\(response.text())" == "Optional(\"pick destroyed\")" {
-                            println("Server response: Pick successfully deleted") // Report
-                        } else {
-                            println("Uncaught exception: Server response is nil") // Report
-                            alert(
-                                "Oops",
-                                "Looks like something went wrong. Please pull to refresh.",
-                                currentView
-                            )
-                        }
-                        if response.responseObject != nil {
-                            let resp = Status(JSONDecoder(response.responseObject!))
-                            println("Response from server has content: \(response.text())") // Report
-                        }
-                    },
-                    failure: {
-                        (error: NSError, response: HTTPResponse?) in
-                        println("deletePickDeleteRequest() called: Server returned failure") // Report
-                        if "\(response?.text())" == "Optional(\"pick not found\")" {
-                            println("Reason for failure: Invalid pick, no deletion executed") // Report
-                            alert(
-                                "Oops",
-                                "Looks like something went wrong. Please pull to refresh.",
-                                currentView
-                            )
-                        } else if "\(response?.text())" == "nil" {
-                            println("Reason for failure: Cannot contact server") // Report
-                            alert(
-                                "No Internet Connection",
-                                "Looks like you don't have a connection right now...",
-                                currentView
-                            )
-                        } else {
-                            println("Reason for failure: Uncaught exception") // Report
-                            alert(
-                                "Oops",
-                                "Looks like something went wrong. Please try again!",
-                                currentView
-                            )
-                        }
+            let params: Dictionary<String,AnyObject> = [
+                "id": pickMGR.picks[indexPath.row].pick_id
+            ]
+            
+            var keepCheckingDeleteRequestStatus = true
+            var deleteRequestStatus = ""
+            
+            deleteRequest.DELETE(
+                "\(rootPath)/picks/\(pickMGR.picks[indexPath.row].pick_id)",
+                parameters: params,
+                success: {
+                    (response: HTTPResponse) in
+                    println("deletePickDeleteRequest() called: Server returned success") // Report
+                    if "\(response.text())" == "Optional(\"pick destroyed\")" {
+                        println("Server response: Pick successfully deleted") // Report
+                        deleteRequestStatus = "success"
+                    } else {
+                        println("Uncaught exception: Server response is nil") // Report
+                        alert(
+                            "Oops",
+                            "Looks like something went wrong. Please pull to refresh.",
+                            currentView
+                        )
                     }
-                )
+                    if response.responseObject != nil {
+                        let resp = Status(JSONDecoder(response.responseObject!))
+                        println("Response from server has content: \(response.text())") // Report
+                    }
+                },
+                failure: {
+                    (error: NSError, response: HTTPResponse?) in
+                    println("deletePickDeleteRequest() called: Server returned failure") // Report
+                    deleteRequestStatus = "failure"
+                    if "\(response?.text())" == "Optional(\"pick not found\")" {
+                        println("Reason for failure: Invalid pick, no deletion executed") // Report
+                        alert(
+                            "Oops",
+                            "Looks like something went wrong. Please pull to refresh.",
+                            currentView
+                        )
+                    } else if "\(response?.text())" == "nil" {
+                        println("Reason for failure: Cannot contact server") // Report
+                        alert(
+                            "No Internet Connection",
+                            "Looks like you don't have a connection right now...",
+                            currentView
+                        )
+                    } else {
+                        println("Reason for failure: Uncaught exception") // Report
+                        alert(
+                            "Oops",
+                            "Looks like something went wrong. Please try again!",
+                            currentView
+                        )
+                    }
+                }
+            )
             
-            pickMGR.picks.removeAtIndex(indexPath.row)
-            self.historyTableView.reloadData()
+            while keepCheckingDeleteRequestStatus == true {
+                if deleteRequestStatus == "success" {
+                    keepCheckingDeleteRequestStatus = false
+                    pickMGR.picks.removeAtIndex(indexPath.row)
+                    println("Pick deleted locally") // Report
+                    self.historyTableView.reloadData()
+                    println("Pick table refreshed") // Report
+                } else if deleteRequestStatus == "failure" {
+                    keepCheckingDeleteRequestStatus = false
+                }
+            }
+
         }
     }
     
