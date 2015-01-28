@@ -82,9 +82,12 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         if (jsonAsArray.count - 3) % 64 == 0 {
 
             var numberOfPicks = (jsonAsArray.count - 3) / 64
-            
+            println(numberOfPicks)
             for (var i = 0; i < numberOfPicks; i++) {
-
+                println(jsonAsArray[5 + i])
+                var pick_id = jsonAsArray[5 + i]
+//                var pick_id_raw = jsonAsArray[5 + i] as NSString
+//                var pick_id = pick_id_raw.substringWithRange(NSRange(location: 1, length: pick_id_raw.length - 2))
                 var game = jsonAsArray[11 + i * 64]
                 var result = jsonAsArray[19 + i * 64]
                 var number = jsonAsArray[47 + i * 64]
@@ -92,8 +95,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
                 var draw_date = draw_date_raw.substringWithRange(NSRange(location: 0, length: 10))
 
                 
-                pickMGR.addPick(number, draw_date: draw_date, result: result, game: game)
-                
+                pickMGR.addPick(pick_id, number: number, draw_date: draw_date, result: result, game: game)
             }
             
         }
@@ -151,21 +153,30 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             
             // DELETE PICK DELETE REQUEST
             
+            struct Status : JSONJoy {
+                var status: String?
+                init() {
+                    
+                }
+                init(_ decoder: JSONDecoder) {
+                    status = decoder["status"].string
+                }
+            }
                 var currentView = self
             
                 var deleteRequest = HTTPTask()
                 
                 let params: Dictionary<String,AnyObject> = [
-                    "id": <<<<INSERT PICK ID HERE>>>>
+                    "id": pickMGR.picks[indexPath.row].pick_id
                 ]
                 
                 deleteRequest.DELETE(
-                    "\(rootPath)/picks\(<<<<INSERT PICK ID HERE>>>>)",
+                    "\(rootPath)/picks/\(pickMGR.picks[indexPath.row].pick_id)",
                     parameters: params,
                     success: {
                         (response: HTTPResponse) in
                         println("deletePickDeleteRequest() called: Server returned success") // Report
-                        if "\(response?.text())" == "Optional(\"pick destroyed\")" {
+                        if "\(response.text())" == "Optional(\"pick destroyed\")" {
                             println("Server response: Pick successfully deleted") // Report
                         } else {
                             println("Uncaught exception: Server response is nil") // Report
