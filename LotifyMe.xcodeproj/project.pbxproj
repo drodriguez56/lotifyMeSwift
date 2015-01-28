@@ -25,7 +25,6 @@
 		656F22451A768B4200C89DD7 /* GlobalOpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F22441A768B4200C89DD7 /* GlobalOpt.swift */; };
 		656F22471A76A74900C89DD7 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F22461A76A74900C89DD7 /* HTTP.swift */; };
 		656F22491A76D9FF00C89DD7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F22481A76D9FF00C89DD7 /* Utilities.swift */; };
-		656F224B1A775EBA00C89DD7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F224A1A775EBA00C89DD7 /* ProfileViewController.swift */; };
 		65D72E851A75582500499E33 /* NewPickDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72E841A75582500499E33 /* NewPickDateViewController.swift */; };
 		65D72E8A1A75791D00499E33 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72E891A75791D00499E33 /* Session.swift */; };
 		65D72E901A75841D00499E33 /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65D72E8E1A75841D00499E33 /* Session.xcdatamodeld */; };
@@ -71,7 +70,6 @@
 		656F22441A768B4200C89DD7 /* GlobalOpt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalOpt.swift; sourceTree = "<group>"; };
 		656F22461A76A74900C89DD7 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		656F22481A76D9FF00C89DD7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		656F224A1A775EBA00C89DD7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		65D72E841A75582500499E33 /* NewPickDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickDateViewController.swift; sourceTree = "<group>"; };
 		65D72E891A75791D00499E33 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		65D72E8F1A75841D00499E33 /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				65D72E841A75582500499E33 /* NewPickDateViewController.swift */,
 				65D72EC81A75B2D300499E33 /* LoginViewController.swift */,
 				CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */,
-				656F224A1A775EBA00C89DD7 /* ProfileViewController.swift */,
 				CB3DF9F11A783A240020A9B9 /* PickCell.swift */,
 			);
 			name = ViewControllers;
@@ -338,7 +335,6 @@
 				65593C1C1A747E8F00FCC915 /* NewPickNumberViewController.swift in Sources */,
 				65D72EC71A75A04E00499E33 /* UserAuthSession.swift in Sources */,
 				65593BE41A743D4E00FCC915 /* AppDelegate.swift in Sources */,
-				656F224B1A775EBA00C89DD7 /* ProfileViewController.swift in Sources */,
 				CB3DF9F21A783A240020A9B9 /* PickCell.swift in Sources */,
 				656F22451A768B4200C89DD7 /* GlobalOpt.swift in Sources */,
 				65D72E8A1A75791D00499E33 /* Session.swift in Sources */,

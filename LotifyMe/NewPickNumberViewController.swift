@@ -96,10 +96,10 @@
             } else if currentSession == "#Error" {
                 println("lotifyButton pressed: Error in fetching session; do nothing") // Report
             } else {
-                println("lotifyButton pressed: User is logged in; segue to ProfileViewController") // Report
+                println("lotifyButton pressed: User is logged in; segue to HistoryTableViewController") // Report
                 newPickPostRequest(self)
                 performSegueWithIdentifier(
-                    "NewPickNumberSegueToProfileViewController",
+                    "NewPickNumberSegueToHistoryTableViewController",
                     sender: sender
                 )
             }

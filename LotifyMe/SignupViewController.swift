@@ -128,9 +128,9 @@
                         resetBeforeLoginVariable()
                         println("Expecting resetBeforeLoginVariable() to have been called") // Report
                     }
-                    println("signupPostRequest() called: User successfully signed up; segue to ProfileViewController") // Report
+                    println("signupPostRequest() called: User successfully signed up; segue to HistoryTableViewController") // Report
                     self.performSegueWithIdentifier(
-                        "SignupViewControllerSegueToProfileViewController",
+                        "SignupViewControllerSegueToHistoryTableViewController",
                         sender: sender
                     )
                 } else if postRequestStatus == "failure" {

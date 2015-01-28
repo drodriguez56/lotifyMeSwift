@@ -72,12 +72,74 @@ func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent comp
     pickerLabel.attributedText = myTitle
     return pickerLabel
 }
+
+// HISTORY BUTTON
+        
+        @IBAction func historyButton(sender: AnyObject) {
+
+            var currentSession = retrieveSession()
+            if currentSession == "nilUser" {
+                
+                println("historyButton pressed: No users logged in; show popup alert for login or signup") // Report
+                
+                let alertController = UIAlertController(
+                    title: "Please Login",
+                    message: "Login to see your history of picks, or create an account if you don't have one.",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                
+                alertController.addAction(
+                    UIAlertAction(
+                        title: "Login",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(actionSheet: UIAlertAction!) in
+                            println("Login selected: Segue to LoginViewController") // Report
+                            self.performSegueWithIdentifier(
+                                "NewPickGameTypeSegueToLoginViewController",
+                                sender: sender
+                            )
+                        }
+                    )
+                )
+                
+                alertController.addAction(
+                    UIAlertAction(
+                        title: "Signup",
+                        style: UIAlertActionStyle.Default,
+                        handler: {(actionSheet: UIAlertAction!) in
+                            println("Signup selected: Segue to SignupViewController") // Report
+                            self.performSegueWithIdentifier(
+                                "NewPickGameTypeSegueToSignupViewController",
+                                sender: sender
+                            )
+                        }
+                    )
+                )
+        
+                presentViewController(
+                    alertController,
+                    animated: true,
+                    completion: nil
+                )
+                
+            } else if currentSession == "#Error" {
+                println("historyButton pressed: Error in fetching session; do nothing") // Report
+            } else {
+                println("historyButton pressed: User is logged in; segue to HistoryTableViewController") // Report
+                performSegueWithIdentifier(
+                    "NewPickGameTypeSegueToHistoryTableViewController",
+                    sender: sender
+                )
+            }
+            
+        }
         
 // SETUP
         
         override func viewDidLoad() {
             super.viewDidLoad()
             self.view.backgroundColor = blueBackground
+            self.navigationItem.setHidesBackButton(true, animated: true)
 //self.view.layer.borderColor = (UIColor( red: 0.4, green: 0.8, blue: 0.95, alpha: 0.5)).CGColor
 //self.view.layer.borderWidth = 15.0;
 //self.view.layer.cornerRadius = 10.0;
