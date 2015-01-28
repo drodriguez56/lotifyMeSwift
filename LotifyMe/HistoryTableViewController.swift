@@ -10,6 +10,29 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // NEW PICK BUTTON
+    
+    @IBAction func newPickButton(sender: AnyObject) {
+        performSegueWithIdentifier(
+            "HistoryTableSegueToNewPickGameTypeViewController",
+            sender: sender
+        )
+    }
+    
+    // LOGOUT BUTTON
+
+    @IBAction func logoutButton(sender: AnyObject) {
+        endSession()
+        performSegueWithIdentifier(
+            "HistoryTableSegueToNewPickGameTypeViewController",
+            sender: sender
+        )
+        alert(
+            "Thank You",
+            "You have successfully logged out.",
+            self
+        )
+    }
     
     // SHOW PICKS GET REQUEST
     
@@ -63,6 +86,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             if getRequestStatus == "success" {
                 keepCheckingGetRequestStatus = false
                 tableView.reloadData()
+                self.refreshControl!.endRefreshing()
             } else if getRequestStatus == "failure" {
                 keepCheckingGetRequestStatus = false
             }
@@ -112,22 +136,49 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        println("History page accessed from user authentication; back button hidden") // Report
         showPicksGetRequest()
         
+        // Pull To Refresh
+        
+        var refreshController = UIRefreshControl()
+        refreshController.attributedTitle = NSAttributedString(string: "Pull to refresh...")
+        refreshController.addTarget(self, action: "showPicksGetRequest", forControlEvents:.ValueChanged)
+        self.refreshControl = refreshController
+        
     }
-    
     
     // TABEL CELL FUNCS
     
     @IBOutlet var historyTableView: UITableView!
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+
+        if (pickMGR.picks.count == 0) {
+            
+            var width = self.view.bounds.size.width
+            var height = self.view.bounds.size.height
+            
+            var label = UILabel(frame: CGRectMake(0, 0, width, height))
+            label.center = CGPointMake(160, 284)
+            label.textAlignment = NSTextAlignment.Center
+//            label.backgroundColor = UIColor.redColor()
+            label.text = "\tLooks like you haven't\n made any picks yet.";
+//            label.tag = 5;
+
+            self.view.addSubview(label);
+   
+        }
+        
+        return 1;
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) ->Int {
+        
         return pickMGR.picks.count
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -136,11 +187,11 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         
         if indexPath.row % 2 == 0
         {
-            cell.backgroundColor = UIColor.purpleColor()
+//            cell.backgroundColor = UIColor.purpleColor()
         }
         else
         {
-           cell.backgroundColor = UIColor.orangeColor()
+//           cell.backgroundColor = UIColor.orangeColor()
         }
         
   

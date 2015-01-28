@@ -13,6 +13,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="89T-Dm-TGj">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="New Pick" id="Kwm-Dd-OmR">
+                                    <connections>
+                                        <action selector="newPickButton:" destination="hiX-TS-1kq" id="fTZ-Oy-vuR"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="6jE-r6-Neg"/>
+                                <barButtonItem title="Logout" id="qhB-DO-jiS">
+                                    <connections>
+                                        <action selector="logoutButton:" destination="hiX-TS-1kq" id="MnP-PW-5n3"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="PickCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickCell" rowHeight="109" id="VMN-MN-xNo" customClass="PickCell" customModule="LotifyMe">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -54,13 +71,21 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="Liq-lf-N8o"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="8N3-kH-kdv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <outlet property="historyTableView" destination="YHu-Q7-y0z" id="ahV-PF-8hz"/>
+                        <segue destination="M2L-zk-dRH" kind="show" identifier="HistoryTableSegueToNewPickGameTypeViewController" id="b8H-bj-ZPT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItI-cR-ZFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2574" y="110"/>
+            <point key="canvasLocation" x="-1710" y="2619"/>
         </scene>
         <!--New Pick Game Type View Controller-->
         <scene sceneID="kZs-Pe-lvO">
@@ -81,7 +106,7 @@
                                     <outlet property="delegate" destination="M2L-zk-dRH" id="Auy-ex-YkW"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
                                 <rect key="frame" x="200" y="389" width="200" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="g7u-il-Ubr"/>
@@ -105,15 +130,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zGo-tR-3fU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="E1h-ph-6Mb">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="E1h-ph-6Mb">
                             <connections>
-                                <segue destination="hiX-TS-1kq" kind="show" id="dFz-dW-Wa6"/>
+                                <action selector="historyButton:" destination="M2L-zk-dRH" id="gIq-sO-q1r"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gameType" destination="4JP-Vc-bnV" id="Bva-0U-tOz"/>
                         <outlet property="submitButton" destination="Mep-jf-wBx" id="VEk-zh-xzE"/>
+                        <segue destination="hiX-TS-1kq" kind="show" identifier="NewPickGameTypeSegueToHistoryTableViewController" id="lbG-ce-DT6"/>
+                        <segue destination="htk-xW-yIm" kind="show" identifier="NewPickGameTypeSegueToLoginViewController" id="HJM-EE-lnq"/>
+                        <segue destination="y9Y-g3-gdx" kind="show" identifier="NewPickGameTypeSegueToSignupViewController" id="8cn-Zw-uEN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAT-cq-44E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -170,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCq-da-UB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1836" y="867"/>
+            <point key="canvasLocation" x="-1710" y="867"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eVd-Am-Nif">
@@ -186,7 +214,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CUv-ck-ZGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1836" y="115"/>
+            <point key="canvasLocation" x="-1710" y="1"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Iiv-gH-72K">
@@ -246,30 +274,12 @@
                     <connections>
                         <outlet property="passwordInput" destination="FZi-6b-9m4" id="IN1-RC-FB0"/>
                         <outlet property="userLoginKeyInput" destination="lX1-kV-0Mb" id="cLb-Oq-HR2"/>
-                        <segue destination="EZO-fj-cme" kind="show" identifier="LoginViewControllerSegueToProfileViewController" id="s2C-br-f5h"/>
+                        <segue destination="hiX-TS-1kq" kind="show" identifier="LoginViewControllerSegueToHistoryTableViewController" id="rgb-b6-a3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubT-tm-7N5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="1617"/>
-        </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="5Cq-4H-w1q">
-            <objects>
-                <viewController id="EZO-fj-cme" customClass="ProfileViewController" customModule="LotifyMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0mh-Ka-CGl"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Bi-Ht-7Na"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="feV-Wq-2M0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0It-vx-lhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1122" y="2365"/>
+            <point key="canvasLocation" x="-872" y="1751"/>
         </scene>
         <!--New Pick Number View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -334,13 +344,13 @@
                         <outlet property="multiToggle" destination="RjM-E8-Agq" id="uNm-yE-nhF"/>
                         <outlet property="numberInput" destination="Iw7-Z0-0AM" id="3Dy-0w-X3y"/>
                         <segue destination="htk-xW-yIm" kind="show" identifier="NewPickNumberSegueToLoginViewController" id="U5G-9a-lYm"/>
-                        <segue destination="EZO-fj-cme" kind="show" identifier="NewPickNumberSegueToProfileViewController" id="aje-un-9Mw"/>
                         <segue destination="y9Y-g3-gdx" kind="show" identifier="NewPickNumberSegueToSignupViewController" id="CN8-a3-UPw"/>
+                        <segue destination="hiX-TS-1kq" kind="show" identifier="NewPickNumberSegueToHistoryTableViewController" id="dcQ-2Q-bxj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1122" y="867"/>
+            <point key="canvasLocation" x="-872" y="867"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="W86-qg-Wy9">
@@ -400,15 +410,18 @@
                     <connections>
                         <outlet property="emailInput" destination="p0b-y3-6Lb" id="KSH-Zb-oBe"/>
                         <outlet property="passwordInput" destination="wWK-BR-fk7" id="FS7-GG-oiK"/>
-                        <segue destination="EZO-fj-cme" kind="show" identifier="SignupViewControllerSegueToProfileViewController" id="F82-QL-Nfw"/>
+                        <segue destination="hiX-TS-1kq" kind="show" identifier="SignupViewControllerSegueToHistoryTableViewController" id="FMd-l9-MHz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4m-e2-Y88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1836" y="1617"/>
+            <point key="canvasLocation" x="-2568" y="1751"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F82-QL-Nfw"/>
+        <segue reference="b8H-bj-ZPT"/>
+        <segue reference="lbG-ce-DT6"/>
+        <segue reference="8cn-Zw-uEN"/>
+        <segue reference="HJM-EE-lnq"/>
     </inferredMetricsTieBreakers>
 </document>
