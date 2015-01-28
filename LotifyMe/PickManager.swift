@@ -32,4 +32,10 @@ class PickManager: NSObject {
         }
         picks.append(pick(pick_id: pick_id, number: number, draw_date: draw_date, result: result, game: game))
     }
+    
+    func clearPicks(){
+        for (var i = 0; i < picks.count; i++){
+                picks.removeAtIndex(i)
+        }
+    }
 }
