@@ -148,6 +148,66 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
         if editingStyle == UITableViewCellEditingStyle.Delete
         {
+            
+            // DELETE PICK DELETE REQUEST
+            
+                var currentView = self
+            
+                var deleteRequest = HTTPTask()
+                
+                let params: Dictionary<String,AnyObject> = [
+                    "id": <<<<INSERT PICK ID HERE>>>>
+                ]
+                
+                deleteRequest.DELETE(
+                    "\(rootPath)/picks\(<<<<INSERT PICK ID HERE>>>>)",
+                    parameters: params,
+                    success: {
+                        (response: HTTPResponse) in
+                        println("deletePickDeleteRequest() called: Server returned success") // Report
+                        if "\(response?.text())" == "Optional(\"pick destroyed\")" {
+                            println("Server response: Pick successfully deleted") // Report
+                        } else {
+                            println("Uncaught exception: Server response is nil") // Report
+                            alert(
+                                "Oops",
+                                "Looks like something went wrong. Please pull to refresh.",
+                                currentView
+                            )
+                        }
+                        if response.responseObject != nil {
+                            let resp = Status(JSONDecoder(response.responseObject!))
+                            println("Response from server has content: \(response.text())") // Report
+                        }
+                    },
+                    failure: {
+                        (error: NSError, response: HTTPResponse?) in
+                        println("deletePickDeleteRequest() called: Server returned failure") // Report
+                        if "\(response?.text())" == "Optional(\"pick not found\")" {
+                            println("Reason for failure: Invalid pick, no deletion executed") // Report
+                            alert(
+                                "Oops",
+                                "Looks like something went wrong. Please pull to refresh.",
+                                currentView
+                            )
+                        } else if "\(response?.text())" == "nil" {
+                            println("Reason for failure: Cannot contact server") // Report
+                            alert(
+                                "No Internet Connection",
+                                "Looks like you don't have a connection right now...",
+                                currentView
+                            )
+                        } else {
+                            println("Reason for failure: Uncaught exception") // Report
+                            alert(
+                                "Oops",
+                                "Looks like something went wrong. Please try again!",
+                                currentView
+                            )
+                        }
+                    }
+                )
+            
             pickMGR.picks.removeAtIndex(indexPath.row)
             self.historyTableView.reloadData()
         }
