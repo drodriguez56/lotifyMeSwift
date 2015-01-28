@@ -154,9 +154,9 @@
 
     }
 
-// NEW PICK JSON PARSER
+// NEW PICK JSON RESULT PARSER
 
-    public func jsonParseOldTicket(jsonAsString: String) -> String {
+    public func jsonParseOldTicketResult(jsonAsString: String) -> String {
         
         var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
             "result\\\":null",
@@ -171,5 +171,26 @@
         var result = jsonAsArray[19]
         
         return result
+        
+    }
+
+// NEW PICK JSON DATE PARSER
+
+    public func jsonParseOldTicketDate(jsonAsString: String) -> String {
+        
+        var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
+            "result\\\":null",
+            withString: "result\\\":\\\"No Result\\\"",
+            options: NSStringCompareOptions.LiteralSearch,
+            range: nil
+        )
+        
+        var jsonCharset = NSCharacterSet(charactersInString: "\\\"")
+        var jsonAsArray = jsonAsStringClean.componentsSeparatedByCharactersInSet(jsonCharset)
+        
+        var drawDateRaw = jsonAsArray[55] as NSString
+        var drawDate = drawDateRaw.substringWithRange(NSRange(location: 0, length: 10))
+        
+        return drawDate
         
     }

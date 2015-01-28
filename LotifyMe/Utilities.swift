@@ -48,8 +48,10 @@
         var currentDate = NSDate()
         
         if currentDate.compare(drawDate) == NSComparisonResult.OrderedAscending {
+            println("Ticket is new, user will be notified in the future") // Report
             return 0
         } else {
+            println("Ticket is old, user will be notified immediately") // Report
             return 1
         }
 

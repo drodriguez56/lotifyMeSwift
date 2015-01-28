@@ -12,4 +12,6 @@
 
     public var rootPath = "http://localhost:4848"
 
-    public var blueBackground =  UIColor(red: 0.8067, green: 0.9053, blue: 0.9943, alpha: 1.0)
+    public var blueBackground =  UIColor(red: 0.203125, green: 0.59375, blue: 0.85546875, alpha: 1.0)
+
+//    public var blueBackground =  UIColor(red: 0.8067, green: 0.9053, blue: 0.9943, alpha: 1.0)

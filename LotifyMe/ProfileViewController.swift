@@ -125,6 +125,7 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             self.view.backgroundColor = blueBackground
+            self.navigationItem.setHidesBackButton(true, animated: true)
         }
         
         override func didReceiveMemoryWarning() {
