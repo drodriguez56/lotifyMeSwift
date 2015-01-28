@@ -10,6 +10,8 @@
 
     class NewPickDateViewController: UIViewController {
         
+        @IBOutlet weak var submitButton: UIButton!
+        
 // DATE PICKER
         
         @IBOutlet weak var datePicker: UIDatePicker!
@@ -31,14 +33,32 @@
 // SETUP
         
         override func viewDidLoad() {
+
             super.viewDidLoad()
-            self.view.backgroundColor = blueBackground
+            self.view.backgroundColor = layerBackgroundColorGlobal
             if dateGlobal != "" {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 var dateGlobalObject = dateFormatter.dateFromString(dateGlobal)
                 datePicker.setDate(dateGlobalObject!, animated: true)
             }
+
+            // Layer Styling
+            
+            self.view.layer.borderColor = layerBorderColorGlobal
+            self.view.layer.borderWidth = 3.0;
+            
+            // Next Button Styling
+            
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 20)
+            submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.backgroundColor = mediumBlue
+            submitButton.layer.cornerRadius = 2.0;
+            
+            // Nav Bar Styling
+            
+            self.navigationItem.title = "Date"
+            
         }
 
         override func viewWillDisappear(animated: Bool) {
