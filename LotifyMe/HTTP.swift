@@ -41,6 +41,8 @@
             "pick": pick
         ]
         
+        println("Ready to send postRequest for Pick#create, with the following parameters: \(params)") // Report
+        
         postRequest.POST(
             "\(rootPath)/picks",
             parameters: params,
