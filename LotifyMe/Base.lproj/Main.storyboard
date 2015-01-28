@@ -10,7 +10,7 @@
             <objects>
                 <tableViewController id="hiX-TS-1kq" customClass="HistoryTableViewController" customModule="LotifyMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHu-Q7-y0z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="89T-Dm-TGj">
@@ -106,10 +106,11 @@
                                     <outlet property="delegate" destination="M2L-zk-dRH" id="Auy-ex-YkW"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
-                                <rect key="frame" x="200" y="389" width="200" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
+                                <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="g7u-il-Ubr"/>
+                                    <constraint firstAttribute="width" constant="200" id="5UI-nW-KLZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="67s-RW-Fb1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next">
@@ -119,14 +120,20 @@
                                     <segue destination="OMf-d7-O0F" kind="show" id="7Ai-LY-vHr"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleAspectFit" image="lotifyme.png" translatesAutoresizingMaskIntoConstraints="NO" id="03f-eT-bSW">
+                                <rect key="frame" x="203" y="28" width="194" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="rdw-l2-34x"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="0qd-WU-RCM"/>
-                            <constraint firstItem="ufy-VJ-xt9" firstAttribute="top" secondItem="Mep-jf-wBx" secondAttribute="bottom" constant="160" id="1q0-R2-1PU"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="BkO-ge-LOp"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="UCQ-Qa-Eni"/>
-                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="bL0-IP-e40"/>
+                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="Bt5-gI-MvQ"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="CHx-e7-Tb7"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="CUo-IQ-dq4"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="DSC-Gb-MfF"/>
+                            <constraint firstAttribute="centerX" secondItem="03f-eT-bSW" secondAttribute="centerX" id="eNU-Si-UMr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zGo-tR-3fU">
@@ -138,6 +145,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="gameType" destination="4JP-Vc-bnV" id="Bva-0U-tOz"/>
+                        <outlet property="historyButton" destination="E1h-ph-6Mb" id="wlb-K7-8Ys"/>
                         <outlet property="submitButton" destination="Mep-jf-wBx" id="VEk-zh-xzE"/>
                         <segue destination="hiX-TS-1kq" kind="show" identifier="NewPickGameTypeSegueToHistoryTableViewController" id="lbG-ce-DT6"/>
                         <segue destination="htk-xW-yIm" kind="show" identifier="NewPickGameTypeSegueToLoginViewController" id="HJM-EE-lnq"/>
@@ -165,11 +173,18 @@
                                 <date key="date" timeIntervalSinceReferenceDate="443899620.050798">
                                     <!--2015-01-25 17:27:00 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="284036400">
+                                    <!--2010-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="631105200">
+                                    <!--2020-12-31 11:00:00 +0000-->
+                                </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-tz-fqp">
-                                <rect key="frame" x="277" y="389" width="46" height="30"/>
+                                <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="nNY-Ff-FHp"/>
+                                    <constraint firstAttribute="width" constant="200" id="q9g-jo-KDA"/>
+                                    <constraint firstAttribute="height" constant="50" id="zty-dN-JMk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next">
@@ -183,17 +198,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ATP-oE-ScO" firstAttribute="leading" secondItem="Kr4-AB-5Rn" secondAttribute="leading" id="6Yc-TU-w0y"/>
-                            <constraint firstAttribute="trailing" secondItem="ATP-oE-ScO" secondAttribute="trailing" id="HYs-at-GLy"/>
-                            <constraint firstAttribute="centerX" secondItem="ATP-oE-ScO" secondAttribute="centerX" id="PFy-hA-GPe"/>
-                            <constraint firstItem="ohd-tz-fqp" firstAttribute="top" secondItem="ATP-oE-ScO" secondAttribute="bottom" constant="8" symbolic="YES" id="epa-gj-f9a"/>
-                            <constraint firstItem="ATP-oE-ScO" firstAttribute="centerY" secondItem="Kr4-AB-5Rn" secondAttribute="centerY" id="hkf-NN-n5g"/>
-                            <constraint firstItem="ohd-tz-fqp" firstAttribute="centerX" secondItem="ATP-oE-ScO" secondAttribute="centerX" id="uiL-4d-qJ1"/>
-                            <constraint firstItem="g5w-BY-kDd" firstAttribute="top" secondItem="ohd-tz-fqp" secondAttribute="bottom" constant="181" id="yMc-gW-vCJ"/>
+                            <constraint firstItem="ohd-tz-fqp" firstAttribute="top" secondItem="ATP-oE-ScO" secondAttribute="bottom" constant="8" symbolic="YES" id="6zj-tq-nlh"/>
+                            <constraint firstItem="ATP-oE-ScO" firstAttribute="leading" secondItem="Kr4-AB-5Rn" secondAttribute="leading" id="DUR-t6-n2s"/>
+                            <constraint firstItem="ohd-tz-fqp" firstAttribute="centerX" secondItem="ATP-oE-ScO" secondAttribute="centerX" id="MwN-nc-w2a"/>
+                            <constraint firstAttribute="trailing" secondItem="ATP-oE-ScO" secondAttribute="trailing" id="fMH-c5-91R"/>
+                            <constraint firstItem="ATP-oE-ScO" firstAttribute="centerY" secondItem="Kr4-AB-5Rn" secondAttribute="centerY" id="w4k-hV-8kO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="ATP-oE-ScO" id="cf2-30-4jl"/>
+                        <outlet property="submitButton" destination="ohd-tz-fqp" id="M2R-CP-3ad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCq-da-UB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,17 +320,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiplier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPX-Ut-Wyk">
                                 <rect key="frame" x="258" y="151" width="85" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="7vG-BQ-zOi"/>
-                                    <constraint firstAttribute="height" constant="21" id="N8V-gK-YBm"/>
+                                    <constraint firstAttribute="height" constant="21" id="GMn-4a-uZ0"/>
+                                    <constraint firstAttribute="width" constant="85" id="USS-RO-9pQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-jW-wkk">
-                                <rect key="frame" x="253" y="389" width="95" height="30"/>
+                                <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="cWd-JA-fcl"/>
+                                    <constraint firstAttribute="height" constant="50" id="1bM-6O-Vbh"/>
+                                    <constraint firstAttribute="width" constant="200" id="jRZ-Zk-rI8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="LotifyMe!">
@@ -329,20 +344,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RPX-Ut-Wyk" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="0F4-NH-ETf"/>
-                            <constraint firstItem="Ui9-QM-eiz" firstAttribute="top" secondItem="eJJ-jW-wkk" secondAttribute="bottom" constant="181" id="20S-ee-OeC"/>
-                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="centerX" secondItem="Iw7-Z0-0AM" secondAttribute="centerX" id="2oN-nj-cuA"/>
-                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="37F-Lg-q81"/>
-                            <constraint firstItem="RjM-E8-Agq" firstAttribute="centerX" secondItem="Iw7-Z0-0AM" secondAttribute="centerX" id="3qz-Fm-u2L"/>
-                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="top" secondItem="RjM-E8-Agq" secondAttribute="bottom" constant="8" symbolic="YES" id="5Yn-CT-5AL"/>
-                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="top" secondItem="Iw7-Z0-0AM" secondAttribute="bottom" constant="8" symbolic="YES" id="Pig-mR-A55"/>
-                            <constraint firstItem="RjM-E8-Agq" firstAttribute="top" secondItem="RPX-Ut-Wyk" secondAttribute="bottom" constant="8" symbolic="YES" id="T7T-Qd-53Z"/>
-                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="mga-tP-IqM"/>
+                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="top" secondItem="RjM-E8-Agq" secondAttribute="bottom" constant="8" symbolic="YES" id="1VA-NW-OW6"/>
+                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="eJJ-jW-wkk" secondAttribute="centerX" id="B9c-ua-QTf"/>
+                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="DLO-iJ-amJ"/>
+                            <constraint firstItem="RjM-E8-Agq" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Ebt-rH-5Af"/>
+                            <constraint firstItem="RPX-Ut-Wyk" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="JLm-Ot-2NN"/>
+                            <constraint firstItem="RjM-E8-Agq" firstAttribute="top" secondItem="RPX-Ut-Wyk" secondAttribute="bottom" constant="8" symbolic="YES" id="N0z-Ag-GkJ"/>
+                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="top" secondItem="Iw7-Z0-0AM" secondAttribute="bottom" constant="8" symbolic="YES" id="dIS-Ph-oWA"/>
+                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="pRJ-uD-VOY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="multiToggle" destination="RjM-E8-Agq" id="uNm-yE-nhF"/>
                         <outlet property="numberInput" destination="Iw7-Z0-0AM" id="3Dy-0w-X3y"/>
+                        <outlet property="submitButton" destination="eJJ-jW-wkk" id="n41-DQ-vby"/>
                         <segue destination="htk-xW-yIm" kind="show" identifier="NewPickNumberSegueToLoginViewController" id="U5G-9a-lYm"/>
                         <segue destination="y9Y-g3-gdx" kind="show" identifier="NewPickNumberSegueToSignupViewController" id="CN8-a3-UPw"/>
                         <segue destination="hiX-TS-1kq" kind="show" identifier="NewPickNumberSegueToHistoryTableViewController" id="dcQ-2Q-bxj"/>
@@ -418,10 +433,13 @@
             <point key="canvasLocation" x="-2568" y="1751"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lotifyme.png" width="578" height="237"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="b8H-bj-ZPT"/>
         <segue reference="lbG-ce-DT6"/>
-        <segue reference="8cn-Zw-uEN"/>
         <segue reference="HJM-EE-lnq"/>
+        <segue reference="8cn-Zw-uEN"/>
     </inferredMetricsTieBreakers>
 </document>

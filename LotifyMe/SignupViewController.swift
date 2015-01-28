@@ -144,7 +144,7 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.view.backgroundColor = blueBackground
+            self.view.backgroundColor = layerBackgroundColorGlobal
         }
 
         override func didReceiveMemoryWarning() {

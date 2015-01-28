@@ -11,6 +11,8 @@
 
     class NewPickNumberViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
+        @IBOutlet weak var submitButton: UIButton!
+
 // NUMBER PICKER
         
         @IBOutlet weak var numberInput: UIPickerView!
@@ -41,7 +43,33 @@
             numberGlobal[component] = "\(numberInputData[component][row])"
             println("numberGlobal dial has been moved, with a new value of \(numberGlobal)")  // Report
         }
-    
+
+// FORMAT PICKER VIEW
+        
+        func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+            
+            let titleData = "\(numberInputData[component][row])"
+            
+            let myTitle = NSAttributedString(
+                string: titleData,
+                attributes: [
+                    NSFontAttributeName:UIFont(
+                        name: "HelveticaNeue",
+                        size: 24.0
+                        )!,
+                    NSForegroundColorAttributeName:UIColor.whiteColor()
+                ]
+            )
+
+            let pickerLabel = UILabel()
+                pickerLabel.textAlignment = .Center
+                pickerLabel.backgroundColor = UIColor( red: 0.3, green: 0.7, blue: 0.95, alpha: 0.5)
+                pickerLabel.attributedText = myTitle
+            
+            return pickerLabel
+            
+        }
+        
 // LOTIFY BUTTON ACTION
         
         @IBAction func lotifyButton(sender: AnyObject) {
@@ -133,8 +161,9 @@
 // SETUP
 
         override func viewDidLoad() {
+
             super.viewDidLoad()
-            self.view.backgroundColor = blueBackground
+            self.view.backgroundColor = layerBackgroundColorGlobal
             multiToggle.tintColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
             numberInput.delegate = self
             numberInput.dataSource = self
@@ -148,6 +177,23 @@
             if multiGlobal == true {
                 multiToggle.setOn(true, animated: true)
             }
+
+            // Layer Styling
+            
+            self.view.layer.borderColor = layerBorderColorGlobal
+            self.view.layer.borderWidth = 3.0;
+            
+            // Next Button Styling
+            
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Medium", size: 17)
+            submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.backgroundColor = mediumBlue
+            submitButton.layer.cornerRadius = 2.0;
+            
+            // Nav Bar Styling
+            
+            self.navigationItem.title = "Make Your Pick"
+        
         }
 
         override func viewWillDisappear(animated: Bool) {

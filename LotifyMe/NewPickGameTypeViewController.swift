@@ -11,9 +11,11 @@
 
     class NewPickGameTypeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
+        @IBOutlet weak var historyButton: UIBarButtonItem!
+        @IBOutlet weak var submitButton: UIButton!
+        
 // GAME TYPE PICKER
         
-        @IBOutlet weak var submitButton: UIButton!
         @IBOutlet weak var gameType: UIPickerView!
         
         let gameTypeData = [
@@ -41,38 +43,35 @@
             gameTypeGlobal = "\(gameTypeData[row])"
             println("gameTypeGlobal dial has been moved, with a new value of \(gameTypeGlobal)") // Report
         }
-//        
-//func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSMutableAttributedString? {
-//    
-//    var attributedString: NSMutableAttributedString!
-//    
-//    attributedString = NSMutableAttributedString(string: gameTypeData[row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-//    
-//    attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "AmericanTypewriter-Bold", size: 18.0)!, range: NSRange(location:2,length:4))
-//
-//    return attributedString
-//}
         
-func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+// FORMAT PICKER VIEW
+        
+        func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
 
-    let pickerLabel = UILabel()
-        pickerLabel.textAlignment = .Center
-    let hue = CGFloat(row) / CGFloat(gameTypeData.count)
-//        pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness:1.0, alpha: 0.2)
-    
-    let titleData = gameTypeData[row]
-    
-    let myTitle = NSAttributedString(
-        string: titleData, attributes: [
-            NSFontAttributeName:UIFont(name: "HelveticaNeue", size: 24.0)!,
-            NSForegroundColorAttributeName:UIColor.whiteColor()
-        ]
-    )
-    
-    pickerLabel.attributedText = myTitle
-    return pickerLabel
-}
+            let titleData = gameTypeData[row]
+            
+            let myTitle = NSAttributedString(
+                string: titleData, attributes: [
+                    NSFontAttributeName:UIFont(
+                        name: "HelveticaNeue",
+                        size: 24.0
+                        )!,
+                    NSForegroundColorAttributeName:UIColor.whiteColor()
+                ]
+            )
+            
+            let pickerLabel = UILabel()
+                pickerLabel.textAlignment = .Center
+                pickerLabel.backgroundColor = UIColor( red: 0.3, green: 0.7, blue: 0.95, alpha: 0.5)
+                pickerLabel.attributedText = myTitle
+            
+            return pickerLabel
+        }
 
+        func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+            return 200
+        }
+        
 // HISTORY BUTTON
         
         @IBAction func historyButton(sender: AnyObject) {
@@ -137,29 +136,11 @@ func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent comp
 // SETUP
         
         override func viewDidLoad() {
+
             super.viewDidLoad()
-            self.view.backgroundColor = blueBackground
+            self.view.backgroundColor = layerBackgroundColorGlobal
             self.navigationItem.setHidesBackButton(true, animated: true)
-//self.view.layer.borderColor = (UIColor( red: 0.4, green: 0.8, blue: 0.95, alpha: 0.5)).CGColor
-//self.view.layer.borderWidth = 15.0;
-//self.view.layer.cornerRadius = 10.0;
-submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 20)
-submitButton.setTitleColor(
-    UIColor( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8),
-    forState: UIControlState.Normal
-)
-navigationController?.navigationBar.barTintColor = UIColor( red: 0.3, green: 0.7, blue: 0.95, alpha: 1)
-submitButton.backgroundColor = UIColor( red: 0.3, green: 0.7, blue: 0.95, alpha: 1)
-submitButton.layer.cornerRadius = 2.0;
-//submitButton.layer.shadowColor = (UIColor.darkGrayColor()).CGColor
-//submitButton.layer.shadowOffset = CGSizeMake(5, 5)
-//            submitButton.layer.cornerRadius = 2.0;
-//            submitButton.layer.borderWidth = 1.0;
-            
-//            submitButton.layer.shadowColor = (UIColor.darkGrayColor()).CGColor;
-//            submitButton.layer.shadowOpacity = 1.0;
-//            submitButton.layer.shadowRadius = 12;
-//            submitButton.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+
             gameType.delegate = self
             gameType.dataSource = self
             gameType.selectRow(
@@ -167,6 +148,24 @@ submitButton.layer.cornerRadius = 2.0;
                 inComponent: 0,
                 animated: true
             )
+            
+            // Layer Styling
+            
+            self.view.layer.borderColor = layerBorderColorGlobal
+            self.view.layer.borderWidth = 3.0;
+
+            
+            // Next Button Styling
+            
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 20)
+            submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.backgroundColor = mediumBlue
+            submitButton.layer.cornerRadius = 2.0;
+            
+            // Nav Bar Styling
+            
+            self.navigationItem.title = "Game"
+            
         }
         
         override func didReceiveMemoryWarning() {
@@ -174,5 +173,11 @@ submitButton.layer.cornerRadius = 2.0;
         }
         
     }
-
+//    var attributedString: NSMutableAttributedString!
+//
+//    attributedString = NSMutableAttributedString(string: gameTypeData[row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+//
+//    attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "AmericanTypewriter-Bold", size: 18.0)!, range: NSRange(location:2,length:4))
+//
+//    return attributedString
 

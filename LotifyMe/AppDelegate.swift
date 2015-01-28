@@ -13,14 +13,23 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
-    // Allow Notifications
         
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+
+        // Allow Notifications
+        
         var type = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound;
         var setting = UIUserNotificationSettings(forTypes: type, categories: nil);
         application.registerUserNotificationSettings(setting);
         application.registerForRemoteNotifications();
+        
+        // Nav Bar Styling
+        
+        var navigationBarAppearace = UINavigationBar.appearance()
+            navigationBarAppearace.tintColor = UIColor.whiteColor()
+            navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+            navigationBarAppearace.barTintColor = navBarBackgroundColorGlobal
+
         return true
     }
     
