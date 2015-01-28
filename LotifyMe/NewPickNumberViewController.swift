@@ -11,6 +11,7 @@
 
     class NewPickNumberViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
+        @IBOutlet weak var multiToggleLabel: UILabel!
         @IBOutlet weak var submitButton: UIButton!
 
 // NUMBER PICKER
@@ -55,7 +56,7 @@
                 attributes: [
                     NSFontAttributeName:UIFont(
                         name: "HelveticaNeue",
-                        size: 24.0
+                        size: 23.0
                         )!,
                     NSForegroundColorAttributeName:UIColor.whiteColor()
                 ]
@@ -164,9 +165,9 @@
 
             super.viewDidLoad()
             self.view.backgroundColor = layerBackgroundColorGlobal
-            multiToggle.tintColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
             numberInput.delegate = self
             numberInput.dataSource = self
+            
             for (var i = 0; i < numberGlobal.count; i++) {
                 numberInput.selectRow(
                     numberGlobal[i].toInt()! - 1,
@@ -178,6 +179,16 @@
                 multiToggle.setOn(true, animated: true)
             }
 
+            // Multi Toggle Styling
+            
+            multiToggle.tintColor = lightBlue
+            multiToggle.onTintColor = UIColor(red: 0.40, green: 0.80, blue: 0.90, alpha: 1.0)
+            
+            // Multi Toggle Label Styling
+            
+            multiToggleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+            multiToggleLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
+            
             // Layer Styling
             
             self.view.layer.borderColor = layerBorderColorGlobal
@@ -185,10 +196,13 @@
             
             // Next Button Styling
             
-            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Medium", size: 17)
+            submitButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
             submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
             submitButton.layer.cornerRadius = 2.0;
+            
+            submitButton.layer.borderColor = buttonBorderColorGlobal
+            submitButton.layer.borderWidth = 1.0
             
             // Nav Bar Styling
             

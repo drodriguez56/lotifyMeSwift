@@ -109,8 +109,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
                                 <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="5UI-nW-KLZ"/>
-                                    <constraint firstAttribute="height" constant="50" id="67s-RW-Fb1"/>
+                                    <constraint firstAttribute="width" constant="200" id="UGN-kT-C9w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Xss-1C-SfP"/>
+                                    <constraint firstAttribute="height" constant="50" id="kvv-VY-j0o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next">
@@ -121,19 +122,21 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleAspectFit" image="lotifyme.png" translatesAutoresizingMaskIntoConstraints="NO" id="03f-eT-bSW">
-                                <rect key="frame" x="203" y="28" width="194" height="95"/>
+                                <rect key="frame" x="174" y="86" width="252" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="rdw-l2-34x"/>
+                                    <constraint firstAttribute="width" constant="252" id="Hgu-25-2bP"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="03f-eT-bSW" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="Ag8-Ty-MGD"/>
                             <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="Bt5-gI-MvQ"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="CHx-e7-Tb7"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="CUo-IQ-dq4"/>
-                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="DSC-Gb-MfF"/>
-                            <constraint firstAttribute="centerX" secondItem="03f-eT-bSW" secondAttribute="centerX" id="eNU-Si-UMr"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="GYo-4U-8Pa"/>
+                            <constraint firstItem="03f-eT-bSW" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="T9N-U9-0Z6"/>
+                            <constraint firstItem="03f-eT-bSW" firstAttribute="top" secondItem="Uen-d5-koA" secondAttribute="bottom" constant="66" id="XnS-Rc-4Qn"/>
+                            <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="e9f-l3-AhX"/>
+                            <constraint firstItem="4JP-Vc-bnV" firstAttribute="top" secondItem="03f-eT-bSW" secondAttribute="bottom" constant="8" symbolic="YES" id="wRu-lF-d2L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zGo-tR-3fU">
@@ -168,23 +171,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ATP-oE-ScO">
-                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="443899620.050798">
-                                    <!--2015-01-25 17:27:00 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="284036400">
-                                    <!--2010-01-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="631105200">
-                                    <!--2020-12-31 11:00:00 +0000-->
-                                </date>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-tz-fqp">
                                 <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="q9g-jo-KDA"/>
-                                    <constraint firstAttribute="height" constant="50" id="zty-dN-JMk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="asA-66-wze"/>
+                                    <constraint firstAttribute="width" constant="200" id="lev-Vf-kCe"/>
+                                    <constraint firstAttribute="height" constant="50" id="lqw-fA-78a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next">
@@ -195,18 +187,34 @@
                                     <segue destination="vXZ-lx-hvc" kind="show" id="rYp-oa-XND"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmn-Q6-tOk">
+                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OMf-d7-O0F" id="huP-aP-k5R"/>
+                                    <outlet property="delegate" destination="OMf-d7-O0F" id="imI-fC-K9A"/>
+                                </connections>
+                            </pickerView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000001192092896" contentMode="scaleAspectFit" image="lotifyme.png" translatesAutoresizingMaskIntoConstraints="NO" id="uIj-rh-E0i">
+                                <rect key="frame" x="174" y="86" width="252" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="bi9-Xn-qPT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ohd-tz-fqp" firstAttribute="top" secondItem="ATP-oE-ScO" secondAttribute="bottom" constant="8" symbolic="YES" id="6zj-tq-nlh"/>
-                            <constraint firstItem="ATP-oE-ScO" firstAttribute="leading" secondItem="Kr4-AB-5Rn" secondAttribute="leading" id="DUR-t6-n2s"/>
-                            <constraint firstItem="ohd-tz-fqp" firstAttribute="centerX" secondItem="ATP-oE-ScO" secondAttribute="centerX" id="MwN-nc-w2a"/>
-                            <constraint firstAttribute="trailing" secondItem="ATP-oE-ScO" secondAttribute="trailing" id="fMH-c5-91R"/>
-                            <constraint firstItem="ATP-oE-ScO" firstAttribute="centerY" secondItem="Kr4-AB-5Rn" secondAttribute="centerY" id="w4k-hV-8kO"/>
+                            <constraint firstItem="uIj-rh-E0i" firstAttribute="top" secondItem="jYE-8p-y5H" secondAttribute="bottom" constant="66" id="5WC-wr-0c5"/>
+                            <constraint firstItem="wmn-Q6-tOk" firstAttribute="leading" secondItem="Kr4-AB-5Rn" secondAttribute="leading" id="AAh-JZ-yk8"/>
+                            <constraint firstItem="ohd-tz-fqp" firstAttribute="top" secondItem="wmn-Q6-tOk" secondAttribute="bottom" constant="8" symbolic="YES" id="BxE-WZ-5JA"/>
+                            <constraint firstItem="wmn-Q6-tOk" firstAttribute="centerX" secondItem="ohd-tz-fqp" secondAttribute="centerX" id="DUe-gE-0fE"/>
+                            <constraint firstItem="wmn-Q6-tOk" firstAttribute="top" secondItem="uIj-rh-E0i" secondAttribute="bottom" constant="8" symbolic="YES" id="ZTx-Cw-Uca"/>
+                            <constraint firstItem="wmn-Q6-tOk" firstAttribute="centerY" secondItem="Kr4-AB-5Rn" secondAttribute="centerY" id="cSX-Wa-zRk"/>
+                            <constraint firstAttribute="trailing" secondItem="wmn-Q6-tOk" secondAttribute="trailing" id="dPe-Cp-AlD"/>
+                            <constraint firstItem="uIj-rh-E0i" firstAttribute="centerX" secondItem="wmn-Q6-tOk" secondAttribute="centerX" id="iSM-aY-Rnj"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="ATP-oE-ScO" id="cf2-30-4jl"/>
+                        <outlet property="datePicker" destination="wmn-Q6-tOk" id="huG-mV-jrz"/>
                         <outlet property="submitButton" destination="ohd-tz-fqp" id="M2R-CP-3ad"/>
                     </connections>
                 </viewController>
@@ -330,8 +338,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-jW-wkk">
                                 <rect key="frame" x="200" y="389" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1bM-6O-Vbh"/>
-                                    <constraint firstAttribute="width" constant="200" id="jRZ-Zk-rI8"/>
+                                    <constraint firstAttribute="width" constant="200" id="8TN-Z2-Mpw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="m7d-gU-AUL"/>
+                                    <constraint firstAttribute="height" constant="50" id="pyl-rb-sVo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="LotifyMe!">
@@ -345,17 +354,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="top" secondItem="RjM-E8-Agq" secondAttribute="bottom" constant="8" symbolic="YES" id="1VA-NW-OW6"/>
-                            <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="eJJ-jW-wkk" secondAttribute="centerX" id="B9c-ua-QTf"/>
+                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="centerX" secondItem="Iw7-Z0-0AM" secondAttribute="centerX" id="8ed-c9-SLg"/>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="DLO-iJ-amJ"/>
                             <constraint firstItem="RjM-E8-Agq" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Ebt-rH-5Af"/>
                             <constraint firstItem="RPX-Ut-Wyk" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="JLm-Ot-2NN"/>
+                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="top" secondItem="Iw7-Z0-0AM" secondAttribute="bottom" constant="8" symbolic="YES" id="KtX-f1-Ujm"/>
                             <constraint firstItem="RjM-E8-Agq" firstAttribute="top" secondItem="RPX-Ut-Wyk" secondAttribute="bottom" constant="8" symbolic="YES" id="N0z-Ag-GkJ"/>
-                            <constraint firstItem="eJJ-jW-wkk" firstAttribute="top" secondItem="Iw7-Z0-0AM" secondAttribute="bottom" constant="8" symbolic="YES" id="dIS-Ph-oWA"/>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="pRJ-uD-VOY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="multiToggle" destination="RjM-E8-Agq" id="uNm-yE-nhF"/>
+                        <outlet property="multiToggleLabel" destination="RPX-Ut-Wyk" id="rjG-ii-YbE"/>
                         <outlet property="numberInput" destination="Iw7-Z0-0AM" id="3Dy-0w-X3y"/>
                         <outlet property="submitButton" destination="eJJ-jW-wkk" id="n41-DQ-vby"/>
                         <segue destination="htk-xW-yIm" kind="show" identifier="NewPickNumberSegueToLoginViewController" id="U5G-9a-lYm"/>
@@ -439,7 +449,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="b8H-bj-ZPT"/>
         <segue reference="lbG-ce-DT6"/>
-        <segue reference="HJM-EE-lnq"/>
         <segue reference="8cn-Zw-uEN"/>
+        <segue reference="HJM-EE-lnq"/>
     </inferredMetricsTieBreakers>
 </document>

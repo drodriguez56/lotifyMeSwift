@@ -17,6 +17,12 @@
     public var numberGlobal = ["8", "8", "8", "8", "8", "8"]
     public var multiGlobal = false
 
+    public var dateConvert = [
+        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        [Int](1...31),
+        [Int](2010...2020)
+    ]
+
 // RESET NEW PICK INPUT VARIABLES
 
     public func resetNewPickInputVariables() {

@@ -8,13 +8,93 @@
 
     import UIKit
 
-    class NewPickDateViewController: UIViewController {
+    class NewPickDateViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         @IBOutlet weak var submitButton: UIButton!
         
 // DATE PICKER
         
-        @IBOutlet weak var datePicker: UIDatePicker!
+        @IBOutlet weak var datePicker: UIPickerView!
+        
+        let datePickerData = [
+            [Int](0...11),
+            [Int](0...30),
+            [Int](0...10)
+        ]
+        
+        func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+            return 3
+        }
+        
+        func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return datePickerData[component].count
+        }
+        
+        func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+            return "\(dateConvert[component][datePickerData[component][row]])"
+        }
+        
+        func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
+            
+            var dateGlobalCharset = NSCharacterSet(charactersInString: "-")
+            var dateGlobalAsArrayBeforeTranslate = dateGlobal.componentsSeparatedByCharactersInSet(dateGlobalCharset)
+            var int = Int()
+            
+            if component == 2 { // Year
+                int = datePickerData[component][row] + 2010
+                dateGlobalAsArrayBeforeTranslate[0] = "\(int)"
+            } else if component == 1 { // Day
+                int = datePickerData[component][row] + 1
+                dateGlobalAsArrayBeforeTranslate[2] = "\(int)"
+            } else if component == 0 { // Month
+                int = datePickerData[component][row] + 1
+                dateGlobalAsArrayBeforeTranslate[1] = "\(int)"
+            }
+            
+            var year = dateGlobalAsArrayBeforeTranslate[0].toInt()!
+            var month = dateGlobalAsArrayBeforeTranslate[1].toInt()!
+            var day = dateGlobalAsArrayBeforeTranslate[2].toInt()!
+            
+            dateGlobal = "\(year)-\(month)-\(day)"
+            println("dateGlobal dial has been moved, with a new value of \(dateGlobal)")  // Report
+            
+        }
+        
+// FORMAT PICKER VIEW
+        
+        func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+            
+            let titleData = "\(dateConvert[component][datePickerData[component][row]])"
+            
+            let myTitle = NSAttributedString(
+                string: titleData,
+                attributes: [
+                    NSFontAttributeName:UIFont(
+                        name: "HelveticaNeue",
+                        size: 23.0
+                        )!,
+                    NSForegroundColorAttributeName:UIColor.whiteColor()
+                ]
+            )
+            
+            let pickerLabel = UILabel()
+            pickerLabel.textAlignment = .Center
+            pickerLabel.backgroundColor = UIColor( red: 0.3, green: 0.7, blue: 0.95, alpha: 0.5)
+            pickerLabel.attributedText = myTitle
+            
+            return pickerLabel
+            
+        }
+        
+        func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+            if component == 0 {
+                return 160
+            } else if component == 1 {
+                return 70
+            } else {
+                return 110
+            }
+        }
         
 // NEXT BUTTON ACTION
         
@@ -25,8 +105,8 @@
 // CAPTURE VALUES FUNCTION
         
         func captureValues() {
-            var dateString = "\(datePicker.date)" as NSString
-            dateGlobal = dateString.substringWithRange(NSRange(location: 0, length: 10))
+//            var dateString = "\(datePicker.date)" as NSString
+//            dateGlobal = dateString.substringWithRange(NSRange(location: 0, length: 10))
             // Report moved to viewWillDisappear() call
         }
         
@@ -36,11 +116,38 @@
 
             super.viewDidLoad()
             self.view.backgroundColor = layerBackgroundColorGlobal
-            if dateGlobal != "" {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                var dateGlobalObject = dateFormatter.dateFromString(dateGlobal)
-                datePicker.setDate(dateGlobalObject!, animated: true)
+            datePicker.delegate = self
+            datePicker.dataSource = self
+            
+            if dateGlobal == "" {
+                var dateString = "\(NSDate())" as NSString
+                dateGlobal = dateString.substringWithRange(NSRange(location: 0, length: 10))
+                println(dateGlobal)
+            }
+            
+            var dateGlobalCharset = NSCharacterSet(charactersInString: "-")
+            var dateGlobalAsTempArray = dateGlobal.componentsSeparatedByCharactersInSet(dateGlobalCharset)
+            
+            for (var i = 0; i < 3; i++) {
+                if i == 0 { // Month
+                    datePicker.selectRow(
+                        dateGlobalAsTempArray[1].toInt()! - 1,
+                        inComponent: i,
+                        animated: true
+                    )
+                } else if i == 1 { // Day
+                    datePicker.selectRow(
+                        dateGlobalAsTempArray[2].toInt()! - 1,
+                        inComponent: i,
+                        animated: true
+                    )
+                } else if i == 2 { // Year
+                    datePicker.selectRow(
+                        dateGlobalAsTempArray[0].toInt()! - 2010,
+                        inComponent: i,
+                        animated: true
+                    )
+                }
             }
 
             // Layer Styling
@@ -50,10 +157,13 @@
             
             // Next Button Styling
             
-            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 20)
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 19)
             submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
             submitButton.layer.cornerRadius = 2.0;
+            
+            submitButton.layer.borderColor = buttonBorderColorGlobal
+            submitButton.layer.borderWidth = 1.0
             
             // Nav Bar Styling
             
