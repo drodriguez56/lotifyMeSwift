@@ -106,7 +106,7 @@
                                     <outlet property="delegate" destination="M2L-zk-dRH" id="Auy-ex-YkW"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-jf-wBx">
                                 <rect key="frame" x="200" y="389" width="200" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="g7u-il-Ubr"/>
