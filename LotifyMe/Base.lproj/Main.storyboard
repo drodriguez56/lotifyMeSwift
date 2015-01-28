@@ -9,30 +9,58 @@
         <scene sceneID="8mL-10-6ec">
             <objects>
                 <tableViewController id="hiX-TS-1kq" customClass="HistoryTableViewController" customModule="LotifyMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHu-Q7-y0z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHu-Q7-y0z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pickCell" id="VMN-MN-xNo">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="PickCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickCell" rowHeight="109" id="VMN-MN-xNo" customClass="PickCell" customModule="LotifyMe">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VMN-MN-xNo" id="950-ay-7Sq">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHZ-d1-pIj">
+                                            <rect key="frame" x="44" y="13" width="162" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrE-gz-ZVz">
+                                            <rect key="frame" x="287" y="21" width="226" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8D-m8-xa8">
+                                            <rect key="frame" x="287" y="59" width="226" height="39"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTP-Zp-Rby">
+                                            <rect key="frame" x="44" y="69" width="128" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="leftBottomLabel" destination="yTP-Zp-Rby" id="6SP-FG-Oxu"/>
+                                    <outlet property="leftTopLable" destination="SHZ-d1-pIj" id="EUQ-JF-odj"/>
+                                    <outlet property="rightBottomLable" destination="J8D-m8-xa8" id="bVD-bp-YCY"/>
+                                    <outlet property="rightTopLabel" destination="GrE-gz-ZVz" id="rlB-P1-JkP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hiX-TS-1kq" id="0X7-f6-7l9"/>
-                            <outlet property="delegate" destination="hiX-TS-1kq" id="sUo-T4-kQd"/>
-                        </connections>
                     </tableView>
                     <connections>
-                        <outlet property="view" destination="YHu-Q7-y0z" id="yJ5-Yq-VpF"/>
+                        <outlet property="historyTableView" destination="YHu-Q7-y0z" id="ahV-PF-8hz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItI-cR-ZFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2574" y="115"/>
+            <point key="canvasLocation" x="-2574" y="110"/>
         </scene>
         <!--New Pick Game Type View Controller-->
         <scene sceneID="kZs-Pe-lvO">
