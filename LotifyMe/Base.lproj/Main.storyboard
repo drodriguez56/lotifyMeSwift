@@ -120,7 +120,7 @@
                                     <segue destination="OMf-d7-O0F" kind="show" id="7Ai-LY-vHr"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleAspectFit" image="lotifyme.png" translatesAutoresizingMaskIntoConstraints="NO" id="03f-eT-bSW">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" image="lotifyme.png" translatesAutoresizingMaskIntoConstraints="NO" id="03f-eT-bSW">
                                 <rect key="frame" x="203" y="28" width="194" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="rdw-l2-34x"/>
