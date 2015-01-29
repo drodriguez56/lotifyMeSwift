@@ -59,7 +59,7 @@
                     )
                 } else {
                     alert(
-                        "\(gameTypeGlobal) Pick Submitted",
+                        "\(gameTypeGlobal) Ticket Submitted",
                         "You will receive an email at \(retrieveSession()) when the results come out.",
                         popupViewControllerCallingViewController
                     )
@@ -77,8 +77,8 @@
                 if "\(response?.text())" == "Optional(\"fail to create pick\")" {
                     println("Reason for failure: Invalid pick, server rollback") // Report
                     alert(
-                        "Duplicate Pick",
-                        "Looks like you've already submitted that pick before...",
+                        "Duplicate Ticket",
+                        "Looks like you've already submitted that ticket before...",
                         popupViewControllerCallingViewController
                     )
                 } else if "\(response?.text())" == "nil" {

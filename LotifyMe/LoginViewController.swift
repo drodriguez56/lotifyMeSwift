@@ -11,6 +11,8 @@
 
     class LoginViewController: UIViewController, UITextFieldDelegate {
         
+        @IBOutlet weak var submitButton: UIButton!
+        
 // CAPTURE INPUT FIELDS
         
         @IBOutlet weak var userLoginKeyInput: UITextField!
@@ -128,6 +130,7 @@
                         println("Expecting resetBeforeLoginVariable() to have been called") // Report
                     }
                     println("loginPostRequest() called: User successfully logged in; segue to HistoryTableViewController") // Report
+                    beforeHistoryVariable = "noBack"
                     self.performSegueWithIdentifier(
                         "LoginViewControllerSegueToHistoryTableViewController",
                         sender: sender
@@ -142,8 +145,28 @@
 // SETUP
         
         override func viewDidLoad() {
+            
             super.viewDidLoad()
             self.view.backgroundColor = layerBackgroundColorGlobal
+            
+            // Layer Styling
+            
+            self.view.layer.borderColor = layerBorderColorGlobal
+            self.view.layer.borderWidth = 3.0;
+            
+            // Next Button Styling
+            
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 19)
+            submitButton.setTitleColor(buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.backgroundColor = mediumBlue
+            submitButton.layer.cornerRadius = 2.0;
+            
+            submitButton.layer.borderColor = buttonBorderColorGlobal
+            submitButton.layer.borderWidth = 1.0
+            
+            // Nav Bar Styling
+            
+            self.navigationItem.title = "Login"
         }
         
         override func didReceiveMemoryWarning() {

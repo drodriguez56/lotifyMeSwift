@@ -197,7 +197,7 @@
             // Next Button Styling
             
             submitButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
-            submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.setTitleColor(buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
             submitButton.layer.cornerRadius = 2.0;
             
@@ -206,7 +206,7 @@
             
             // Nav Bar Styling
             
-            self.navigationItem.title = "Make Your Pick"
+            self.navigationItem.title = "Ticket"
         
         }
 

@@ -158,7 +158,7 @@
             // Next Button Styling
             
             submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 19)
-            submitButton.setTitleColor( buttonTextColorGlobal, forState: UIControlState.Normal)
+            submitButton.setTitleColor(buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
             submitButton.layer.cornerRadius = 2.0;
             

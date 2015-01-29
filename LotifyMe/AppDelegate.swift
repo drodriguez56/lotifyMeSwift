@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
             navigationBarAppearace.barTintColor = navBarBackgroundColorGlobal
 
+        // Status Bar Styling
+        
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
         return true
     }
     

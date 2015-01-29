@@ -12,7 +12,7 @@
 
     // ROOT PATH
 
-    public var rootPath = "http://localhost:4848"
+    public var rootPath = "https://lotifyme.herokuapp.com"
 
     // COLOR SCHEME
 

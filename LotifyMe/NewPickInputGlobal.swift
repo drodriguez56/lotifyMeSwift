@@ -50,6 +50,20 @@
 
     }
 
+// BEFORE HISTORY VARIABLE
+
+public var beforeHistoryVariable = ""
+
+// RESET BEFORE HISTORY VARIABLE
+
+public func resetBeforeHistoryVariable() {
+    
+    beforeHistoryVariable = ""
+    
+    println("resetBeforeHistoryVariable() called: beforeHistoryVariable has been reset") // Report
+    
+}
+
 // NORMALIZE GAME NAMES
 
 public func cleanGameTypeInput(gameTypeGlobal: String) -> String {

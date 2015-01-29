@@ -135,9 +135,18 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
     // SETUP
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        println("History page accessed from user authentication; back button hidden") // Report
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        if beforeHistoryVariable == "noBack" {
+            resetBeforeHistoryVariable()
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            println("History page accessed from user authentication; back button hidden") // Report
+        }
+        
         showPicksGetRequest()
         
         // Pull To Refresh
@@ -146,6 +155,10 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
         refreshController.attributedTitle = NSAttributedString(string: "Pull to refresh...")
         refreshController.addTarget(self, action: "showPicksGetRequest", forControlEvents:.ValueChanged)
         self.refreshControl = refreshController
+        
+        // Nav Bar Styling
+        
+        self.navigationItem.title = "Ticket History"
         
     }
     
@@ -163,9 +176,9 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             var label = UILabel(frame: CGRectMake(0, 0, width, height))
             label.center = CGPointMake(160, 284)
             label.textAlignment = NSTextAlignment.Center
-//            label.backgroundColor = UIColor.redColor()
-            label.text = "\tLooks like you haven't\n made any picks yet.";
-//            label.tag = 5;
+            label.text = "\t\t No tickets here yet..."
+            label.font = UIFont(name: "HelveticaNeue", size: 17)
+            label.textColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.8)
 
             self.view.addSubview(label);
    
@@ -197,7 +210,7 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
   
         cell.leftTopLable?.text = pickMGR.picks[indexPath.row].game
         cell.leftBottomLabel?.text = pickMGR.picks[indexPath.row].draw_date
-        cell.rightTopLabel?.text = pickMGR.picks[indexPath.row].number
+        cell.rightTopLabel?.text = "Ticket: " + pickMGR.picks[indexPath.row].number
         cell.rightBottomLable?.text = pickMGR.picks[indexPath.row].result
         return cell
     }
