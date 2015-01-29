@@ -206,23 +206,23 @@
             
             // Multi Toggle Label Styling
             
-            multiToggleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+            multiToggleLabel!.font = UIFont(name: "HelveticaNeue", size: 18)
             multiToggleLabel.textColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
             
             // Layer Styling
             
             self.view.layer.borderColor = layerBorderColorGlobal
-            self.view.layer.borderWidth = 3.0;
+            self.view.layer.borderWidth = layerBorderWidth
             
             // Next Button Styling
             
-            submitButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+            submitButton.titleLabel!.font = UIFont(name: "HelveticaNeue", size: 18)
             submitButton.setTitleColor(buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
-            submitButton.layer.cornerRadius = 2.0;
+            submitButton.layer.cornerRadius = buttonCornerRadius
             
             submitButton.layer.borderColor = buttonBorderColorGlobal
-            submitButton.layer.borderWidth = 1.0
+            submitButton.layer.borderWidth = buttonBorderWidth
             
             // Nav Bar Styling
             

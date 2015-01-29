@@ -153,21 +153,29 @@
             // Layer Styling
             
             self.view.layer.borderColor = layerBorderColorGlobal
-            self.view.layer.borderWidth = 3.0;
+            self.view.layer.borderWidth = layerBorderWidth
             
             // Next Button Styling
             
-            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 19)
+            submitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
             submitButton.setTitleColor(buttonTextColorGlobal, forState: UIControlState.Normal)
             submitButton.backgroundColor = mediumBlue
-            submitButton.layer.cornerRadius = 2.0;
+            submitButton.layer.cornerRadius = buttonCornerRadius
             
             submitButton.layer.borderColor = buttonBorderColorGlobal
-            submitButton.layer.borderWidth = 1.0
+            submitButton.layer.borderWidth = buttonBorderWidth
             
             // Nav Bar Styling
             
             self.navigationItem.title = "Signup"
+            
+            // Input Styling
+            
+            emailInput.layer.backgroundColor = UIColor.whiteColor().CGColor
+            emailInput.layer.cornerRadius = buttonCornerRadius
+            
+            passwordInput.layer.backgroundColor = UIColor.whiteColor().CGColor
+            passwordInput.layer.cornerRadius = buttonCornerRadius
             
         }
 

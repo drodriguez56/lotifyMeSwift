@@ -23,11 +23,13 @@
     // APPLY COLOR SCHEME
 
     public var navBarBackgroundColorGlobal = lightBlue
+
     public var layerBackgroundColorGlobal = darkBlue
-    public var buttonBackgroundColorGlobal = mediumBlue
-
     public var layerBorderColorGlobal = (UIColor( red: 0.4, green: 0.8, blue: 0.95, alpha: 0.5)).CGColor
+    public var layerBorderWidth = CGFloat(0.0)
 
+    public var buttonBackgroundColorGlobal = mediumBlue
     public var buttonTextColorGlobal = UIColor( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
-
-    public var buttonBorderColorGlobal = UIColor(red: 0.20, green: 0.60, blue: 0.85, alpha: 1.0).CGColor
+    public var buttonBorderColorGlobal = mediumBlue.CGColor
+    public var buttonCornerRadius = CGFloat(2.0)
+    public var buttonBorderWidth = CGFloat(2.0)
