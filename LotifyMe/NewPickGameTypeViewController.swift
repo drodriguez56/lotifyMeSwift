@@ -133,6 +133,15 @@
             
         }
         
+        // DETECT SWIPE TO CONTINUE
+        
+        func leftSwiped() {
+            performSegueWithIdentifier(
+                "NewPickGameTypeSegueToNewPickDateViewController",
+                sender: self
+            )
+        }
+        
 // SETUP
         
         override func viewDidLoad() {
@@ -168,6 +177,12 @@
             // Nav Bar Styling
             
             self.navigationItem.title = "Game"
+            
+            // Swipe to Continue
+            
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("leftSwiped"))
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            self.view.addGestureRecognizer(swipeLeft)
             
         }
         

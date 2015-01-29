@@ -70,11 +70,19 @@
             return pickerLabel
             
         }
-        
+
 // LOTIFY BUTTON ACTION
         
         @IBAction func lotifyButton(sender: AnyObject) {
-
+            
+            abstractLotifyButton(sender)
+            
+        }
+        
+// ABSTRACT LOTIFY BUTTON ACTION
+        
+        func abstractLotifyButton(sender: AnyObject) {
+            
             captureValues()
             println("New Pick object will be created shortly. Input values will be:") // Report
             println("* gameTypeGlobal: \(gameTypeGlobal)") // Report
@@ -127,11 +135,13 @@
             } else {
                 println("lotifyButton pressed: User is logged in; segue to HistoryTableViewController") // Report
                 newPickPostRequest(self)
+                beforeHistoryVariable = "noBack"
                 performSegueWithIdentifier(
                     "NewPickNumberSegueToHistoryTableViewController",
                     sender: sender
                 )
             }
+            
         }
 
 // SEGUE TO LOGIN
@@ -157,6 +167,16 @@
         func captureValues() {
             multiGlobal = multiToggle.on
             // Report moved to viewWillDisappear() call
+        }
+        
+// DETECT SWIPE TO CONTINUE
+        
+        func leftSwiped() {
+//            abstractLotifyButton(self)
+        }
+        
+        func rightSwiped() {
+            navigationController?.popViewControllerAnimated(true)
         }
         
 // SETUP
@@ -207,6 +227,16 @@
             // Nav Bar Styling
             
             self.navigationItem.title = "Ticket"
+            
+            // Swipe to Continue
+            
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("leftSwiped"))
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("rightSwiped"))
+            swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+            self.view.addGestureRecognizer(swipeRight)
         
         }
 

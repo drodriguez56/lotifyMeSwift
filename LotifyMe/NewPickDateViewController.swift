@@ -110,6 +110,19 @@
             // Report moved to viewWillDisappear() call
         }
         
+        // DETECT SWIPE TO CONTINUE
+        
+        func leftSwiped() {
+            performSegueWithIdentifier(
+                "NewPickDateSegueToNewPickNumberViewController",
+                sender: self
+            )
+        }
+        
+        func rightSwiped() {
+            navigationController?.popViewControllerAnimated(true)
+        }
+        
 // SETUP
         
         override func viewDidLoad() {
@@ -168,6 +181,16 @@
             // Nav Bar Styling
             
             self.navigationItem.title = "Date"
+            
+            // Swipe to Continue
+            
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("leftSwiped"))
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("rightSwiped"))
+            swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+            self.view.addGestureRecognizer(swipeRight)
             
         }
 
