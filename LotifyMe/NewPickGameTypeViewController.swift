@@ -22,9 +22,7 @@
             "Cash4Life",
             "Megamillions",
             "NYLotto",
-            "Pick10",
-            "Powerball",
-            "Take5"
+            "Powerball"
         ]
         
         func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
