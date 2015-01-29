@@ -18,7 +18,7 @@
 
     public var lightBlue    =   UIColor(red: 0.25, green: 0.65, blue: 0.95, alpha: 1.0)
     public var mediumBlue   =   UIColor(red: 0.28, green: 0.68, blue: 0.95, alpha: 1.0)
-    public var darkBlue     =   UIColor(red: 0.203125, green: 0.59375, blue: 0.85546875, alpha: 1.0)
+    public var darkBlue     =   UIColor(red: 0.20, green: 0.59, blue: 0.85, alpha: 1.0)
 
     // APPLY COLOR SCHEME
 

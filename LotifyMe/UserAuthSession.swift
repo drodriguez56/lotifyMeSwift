@@ -160,7 +160,7 @@
         
         var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
             "result\\\":null",
-            withString: "result\\\":\\\"No Result\\\"",
+            withString: "result\\\":\\\"Result Pending\\\"",
             options: NSStringCompareOptions.LiteralSearch,
             range: nil
         )
@@ -180,7 +180,7 @@
         
         var jsonAsStringClean = jsonAsString.stringByReplacingOccurrencesOfString(
             "result\\\":null",
-            withString: "result\\\":\\\"No Result\\\"",
+            withString: "result\\\":\\\"Result Pending\\\"",
             options: NSStringCompareOptions.LiteralSearch,
             range: nil
         )
