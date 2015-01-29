@@ -31,6 +31,9 @@
 		65D72E901A75841D00499E33 /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65D72E8E1A75841D00499E33 /* Session.xcdatamodeld */; };
 		65D72EC71A75A04E00499E33 /* UserAuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72EC61A75A04E00499E33 /* UserAuthSession.swift */; };
 		65D72EC91A75B2D300499E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D72EC81A75B2D300499E33 /* LoginViewController.swift */; };
+		65DF10681A79F14D008D9D30 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DF10671A79F14D008D9D30 /* 1.png */; };
+		65DF106A1A79F47A008D9D30 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DF10691A79F47A008D9D30 /* 2.png */; };
+		65DF106C1A79F551008D9D30 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DF106B1A79F551008D9D30 /* 3.png */; };
 		CB3DF9F01A782EFE0020A9B9 /* PickManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DF9EF1A782EFE0020A9B9 /* PickManager.swift */; };
 		CB3DF9F21A783A240020A9B9 /* PickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3DF9F11A783A240020A9B9 /* PickCell.swift */; };
 		CBEE2CC91A76EF1700F1CB98 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */; };
@@ -77,6 +80,9 @@
 		65D72E8F1A75841D00499E33 /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
 		65D72EC61A75A04E00499E33 /* UserAuthSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthSession.swift; sourceTree = "<group>"; };
 		65D72EC81A75B2D300499E33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		65DF10671A79F14D008D9D30 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		65DF10691A79F47A008D9D30 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		65DF106B1A79F551008D9D30 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		CB3DF9EF1A782EFE0020A9B9 /* PickManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickManager.swift; sourceTree = "<group>"; };
 		CB3DF9F11A783A240020A9B9 /* PickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickCell.swift; sourceTree = "<group>"; };
 		CBEE2CC81A76EF1700F1CB98 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +127,9 @@
 		65593BE01A743D4E00FCC915 /* LotifyMe */ = {
 			isa = PBXGroup;
 			children = (
+				65DF10671A79F14D008D9D30 /* 1.png */,
+				65DF10691A79F47A008D9D30 /* 2.png */,
+				65DF106B1A79F551008D9D30 /* 3.png */,
 				65593BE31A743D4E00FCC915 /* AppDelegate.swift */,
 				65593BE71A743D4E00FCC915 /* Main.storyboard */,
 				65D72E8E1A75841D00499E33 /* Session.xcdatamodeld */,
@@ -301,7 +310,10 @@
 			files = (
 				65593BE91A743D4E00FCC915 /* Main.storyboard in Resources */,
 				65C9B8631A798321000CDFD1 /* lotifyme.png in Resources */,
+				65DF106A1A79F47A008D9D30 /* 2.png in Resources */,
+				65DF106C1A79F551008D9D30 /* 3.png in Resources */,
 				65593BEE1A743D4E00FCC915 /* LaunchScreen.xib in Resources */,
+				65DF10681A79F14D008D9D30 /* 1.png in Resources */,
 				656F223E1A76170100C89DD7 /* bg.jpg in Resources */,
 				65593BEB1A743D4E00FCC915 /* Images.xcassets in Resources */,
 			);

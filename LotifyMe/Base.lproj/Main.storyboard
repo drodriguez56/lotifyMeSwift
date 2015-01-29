@@ -151,12 +151,20 @@
                                     <constraint firstAttribute="width" constant="252" id="Hgu-25-2bP"/>
                                 </constraints>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.89999999999999991" contentMode="scaleAspectFit" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-Wp-zEK">
+                                <rect key="frame" x="280" y="559" width="40" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="0Tf-XS-Jcs"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8Pg-Wp-zEK" secondAttribute="bottom" constant="20" symbolic="YES" id="68g-Oq-jAC"/>
                             <constraint firstItem="03f-eT-bSW" firstAttribute="centerX" secondItem="fFo-eb-u4G" secondAttribute="centerX" id="Ag8-Ty-MGD"/>
                             <constraint firstItem="4JP-Vc-bnV" firstAttribute="centerY" secondItem="fFo-eb-u4G" secondAttribute="centerY" id="Bt5-gI-MvQ"/>
                             <constraint firstItem="Mep-jf-wBx" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="GYo-4U-8Pa"/>
+                            <constraint firstItem="8Pg-Wp-zEK" firstAttribute="centerX" secondItem="Mep-jf-wBx" secondAttribute="centerX" id="KhX-VJ-lRL"/>
                             <constraint firstItem="03f-eT-bSW" firstAttribute="centerX" secondItem="4JP-Vc-bnV" secondAttribute="centerX" id="T9N-U9-0Z6"/>
                             <constraint firstItem="03f-eT-bSW" firstAttribute="top" secondItem="Uen-d5-koA" secondAttribute="bottom" constant="66" id="XnS-Rc-4Qn"/>
                             <constraint firstItem="Mep-jf-wBx" firstAttribute="top" secondItem="4JP-Vc-bnV" secondAttribute="bottom" constant="8" symbolic="YES" id="e9f-l3-AhX"/>
@@ -224,11 +232,19 @@
                                     <constraint firstAttribute="width" constant="252" id="bi9-Xn-qPT"/>
                                 </constraints>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.89999999999999991" contentMode="scaleAspectFit" image="2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-HJ-P7F">
+                                <rect key="frame" x="280" y="559" width="40" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="OAr-o2-xL0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uIj-rh-E0i" firstAttribute="top" secondItem="jYE-8p-y5H" secondAttribute="bottom" constant="66" id="5WC-wr-0c5"/>
+                            <constraint firstItem="Ipt-HJ-P7F" firstAttribute="centerX" secondItem="ohd-tz-fqp" secondAttribute="centerX" id="8QZ-4F-CRx"/>
                             <constraint firstItem="wmn-Q6-tOk" firstAttribute="leading" secondItem="Kr4-AB-5Rn" secondAttribute="leading" id="AAh-JZ-yk8"/>
+                            <constraint firstAttribute="bottom" secondItem="Ipt-HJ-P7F" secondAttribute="bottom" constant="20" symbolic="YES" id="BMD-12-cw1"/>
                             <constraint firstItem="ohd-tz-fqp" firstAttribute="top" secondItem="wmn-Q6-tOk" secondAttribute="bottom" constant="8" symbolic="YES" id="BxE-WZ-5JA"/>
                             <constraint firstItem="wmn-Q6-tOk" firstAttribute="centerX" secondItem="ohd-tz-fqp" secondAttribute="centerX" id="DUe-gE-0fE"/>
                             <constraint firstItem="wmn-Q6-tOk" firstAttribute="top" secondItem="uIj-rh-E0i" secondAttribute="bottom" constant="8" symbolic="YES" id="ZTx-Cw-Uca"/>
@@ -381,16 +397,24 @@
                                     <action selector="lotifyButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O0z-82-ZFP"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.89999999999999991" contentMode="scaleAspectFit" image="3.png" translatesAutoresizingMaskIntoConstraints="NO" id="lUs-Sk-aW3">
+                                <rect key="frame" x="280" y="559" width="40" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6cx-Ga-cDf"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="top" secondItem="RjM-E8-Agq" secondAttribute="bottom" constant="8" symbolic="YES" id="1VA-NW-OW6"/>
                             <constraint firstItem="eJJ-jW-wkk" firstAttribute="centerX" secondItem="Iw7-Z0-0AM" secondAttribute="centerX" id="8ed-c9-SLg"/>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="DLO-iJ-amJ"/>
+                            <constraint firstAttribute="bottom" secondItem="lUs-Sk-aW3" secondAttribute="bottom" constant="20" symbolic="YES" id="EYy-AE-PJr"/>
                             <constraint firstItem="RjM-E8-Agq" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Ebt-rH-5Af"/>
                             <constraint firstItem="RPX-Ut-Wyk" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="JLm-Ot-2NN"/>
                             <constraint firstItem="eJJ-jW-wkk" firstAttribute="top" secondItem="Iw7-Z0-0AM" secondAttribute="bottom" constant="8" symbolic="YES" id="KtX-f1-Ujm"/>
                             <constraint firstItem="RjM-E8-Agq" firstAttribute="top" secondItem="RPX-Ut-Wyk" secondAttribute="bottom" constant="8" symbolic="YES" id="N0z-Ag-GkJ"/>
+                            <constraint firstItem="lUs-Sk-aW3" firstAttribute="centerX" secondItem="eJJ-jW-wkk" secondAttribute="centerX" id="QqN-4d-gXE"/>
                             <constraint firstItem="Iw7-Z0-0AM" firstAttribute="centerX" secondItem="RjM-E8-Agq" secondAttribute="centerX" id="pRJ-uD-VOY"/>
                         </constraints>
                     </view>
@@ -484,12 +508,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1.png" width="66" height="21"/>
+        <image name="2.png" width="66" height="21"/>
+        <image name="3.png" width="66" height="21"/>
         <image name="lotifyme.png" width="578" height="237"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FMd-l9-MHz"/>
-        <segue reference="8cn-Zw-uEN"/>
+        <segue reference="lbG-ce-DT6"/>
         <segue reference="b8H-bj-ZPT"/>
         <segue reference="HJM-EE-lnq"/>
+        <segue reference="8cn-Zw-uEN"/>
     </inferredMetricsTieBreakers>
 </document>
