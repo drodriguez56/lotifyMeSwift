@@ -135,7 +135,6 @@
             if dateGlobal == "" {
                 var dateString = "\(NSDate())" as NSString
                 dateGlobal = dateString.substringWithRange(NSRange(location: 0, length: 10))
-                println(dateGlobal)
             }
             
             var dateGlobalCharset = NSCharacterSet(charactersInString: "-")

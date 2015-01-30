@@ -52,29 +52,28 @@
 
 // BEFORE HISTORY VARIABLE
 
-public var beforeHistoryVariable = ""
+    public var beforeHistoryVariable = ""
 
 // RESET BEFORE HISTORY VARIABLE
 
-public func resetBeforeHistoryVariable() {
-    
-    beforeHistoryVariable = ""
-    
-    println("resetBeforeHistoryVariable() called: beforeHistoryVariable has been reset") // Report
-    
-}
+    public func resetBeforeHistoryVariable() {
+        
+        beforeHistoryVariable = ""
+        
+        println("resetBeforeHistoryVariable() called: beforeHistoryVariable has been reset") // Report
+        
+    }
 
 // NORMALIZE GAME NAMES
 
-public func cleanGameTypeInput(gameTypeGlobal: String) -> String {
-    println(gameTypeGlobal)
-    if (gameTypeGlobal == "Megamillions")
-    {
-        return "MegaMillions"
+    public func cleanGameTypeInput(gameTypeGlobal: String) -> String {
+        if (gameTypeGlobal == "Megamillions")
+        {
+            return "MegaMillion"
+        }
+        else if (gameTypeGlobal == "NYLotto")
+        {
+            return "NyLotto"
+        }
+        return gameTypeGlobal
     }
-    else if (gameTypeGlobal == "NYLotto")
-    {
-        return "NyLotto"
-    }
-    return gameTypeGlobal
-}
