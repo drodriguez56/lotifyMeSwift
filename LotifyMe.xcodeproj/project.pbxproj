@@ -20,6 +20,8 @@
 		65593C171A745E6700FCC915 /* HTTPUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593C121A745E6700FCC915 /* HTTPUpload.swift */; };
 		65593C1C1A747E8F00FCC915 /* NewPickNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593C1B1A747E8F00FCC915 /* NewPickNumberViewController.swift */; };
 		65593C1E1A74932900FCC915 /* NewPickGameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593C1D1A74932900FCC915 /* NewPickGameTypeViewController.swift */; };
+		6563AAF81AC373790072EA19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6563AAF61AC373790072EA19 /* Crashlytics.framework */; };
+		6563AAF91AC373790072EA19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6563AAF71AC373790072EA19 /* Fabric.framework */; };
 		656F223E1A76170100C89DD7 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 656F223D1A76170100C89DD7 /* bg.jpg */; };
 		656F22431A768A9D00C89DD7 /* NewPickInputGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F22421A768A9D00C89DD7 /* NewPickInputGlobal.swift */; };
 		656F22451A768B4200C89DD7 /* GlobalOpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656F22441A768B4200C89DD7 /* GlobalOpt.swift */; };
@@ -69,6 +71,8 @@
 		65593C131A745E6700FCC915 /* SwiftHTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftHTTP.h; sourceTree = "<group>"; };
 		65593C1B1A747E8F00FCC915 /* NewPickNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickNumberViewController.swift; sourceTree = "<group>"; };
 		65593C1D1A74932900FCC915 /* NewPickGameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickGameTypeViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		6563AAF61AC373790072EA19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		6563AAF71AC373790072EA19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		656F223D1A76170100C89DD7 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bg.jpg; path = LotifyMe/bg.jpg; sourceTree = "<group>"; };
 		656F22421A768A9D00C89DD7 /* NewPickInputGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPickInputGlobal.swift; sourceTree = "<group>"; };
 		656F22441A768B4200C89DD7 /* GlobalOpt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalOpt.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6563AAF81AC373790072EA19 /* Crashlytics.framework in Frameworks */,
+				6563AAF91AC373790072EA19 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +128,8 @@
 		65593BD51A743D4E00FCC915 = {
 			isa = PBXGroup;
 			children = (
+				6563AAF61AC373790072EA19 /* Crashlytics.framework */,
+				6563AAF71AC373790072EA19 /* Fabric.framework */,
 				65593BE01A743D4E00FCC915 /* LotifyMe */,
 				65593BF61A743D4E00FCC915 /* LotifyMeTests */,
 				65593BDF1A743D4E00FCC915 /* Products */,
@@ -247,6 +255,7 @@
 				65593BDA1A743D4E00FCC915 /* Sources */,
 				65593BDB1A743D4E00FCC915 /* Frameworks */,
 				65593BDC1A743D4E00FCC915 /* Resources */,
+				6563AAF51AC372DE0072EA19 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -338,6 +347,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6563AAF51AC372DE0072EA19 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 8f0f87ea4c88566ea164abe1fd68106d86b6e306 7a01f357d1811ca63c01edb5f2d44bf6ad35253544edea14170d6cddb77c76b2";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65593BDA1A743D4E00FCC915 /* Sources */ = {
@@ -487,6 +512,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LotifyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -497,6 +526,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LotifyMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

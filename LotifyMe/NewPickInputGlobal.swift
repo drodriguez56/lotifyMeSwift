@@ -14,7 +14,7 @@
 
     public var gameTypeGlobal = "NYLotto"
     public var dateGlobal = ""
-    public var numberGlobal = ["8", "8", "8", "8", "8", "8"]
+    public var numberGlobal = ["50", "50", "50", "50", "50", "50"]
     public var multiGlobal = false
 
     public var dateConvert = [
