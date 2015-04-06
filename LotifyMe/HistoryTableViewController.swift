@@ -67,6 +67,8 @@ class HistoryTableViewController: UITableViewController, UITableViewDelegate, UI
             success: {
                 (response: HTTPResponse) in
                 println("showPicksGetRequest() called: Server returned success") // Report
+                println(params)
+                println(response.text())
                 if response.responseObject != nil {
                     let resp = Status(JSONDecoder(response.responseObject!))
                     self.showPicksGetRequestResponseParser("\(response.text())")
