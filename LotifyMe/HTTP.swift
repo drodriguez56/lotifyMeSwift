@@ -49,6 +49,8 @@
             success: {
                 (response: HTTPResponse) in
                 println("newPickPostRequest() called: Server returned success") // Report
+                println("*")
+                println(response.text())
                 var jsonAsString = "\(response.text())" as String
                 if oldTicket(jsonParseOldTicketDate(jsonAsString)) == 1 {
                     var result = jsonParseOldTicketResult(jsonAsString)

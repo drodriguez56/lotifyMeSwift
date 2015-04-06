@@ -518,9 +518,9 @@
         <image name="lotifyme.png" width="578" height="237"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b8H-bj-ZPT"/>
-        <segue reference="FMd-l9-MHz"/>
         <segue reference="CN8-a3-UPw"/>
+        <segue reference="b8H-bj-ZPT"/>
+        <segue reference="dcQ-2Q-bxj"/>
         <segue reference="U5G-9a-lYm"/>
     </inferredMetricsTieBreakers>
 </document>
